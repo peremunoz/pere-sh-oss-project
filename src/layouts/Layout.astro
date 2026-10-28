@@ -44,9 +44,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://oss.pere
     <!-- Theme Color -->
     <meta name="theme-color" content="#ffffff" />
   </head>
-  <body class="min-h-screen bg-[#fafafa] text-zinc-900 antialiased selection:bg-blue-600 selection:text-white">
+  <body class="min-h-screen bg-[#fafafa] text-zinc-900 antialiased selection:bg-blue-600 selection:text-white overflow-x-clip">
     <div class="fixed inset-0 bg-grid pointer-events-none opacity-60 z-0"></div>
-    <div class="relative z-10 flex min-h-screen flex-col">
+    <div class="relative z-10 flex min-h-screen flex-col overflow-x-clip">
       <slot />
     </div>
   </body>
