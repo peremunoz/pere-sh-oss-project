@@ -1,0 +1,84 @@
+---
+import {
+  faTypescript,
+  faJs,
+  faRust,
+  faPython,
+  faVuejs,
+  faReact,
+  faGolang,
+  faNodeJs,
+  faPhp,
+  faJava,
+  faSwift,
+  faDocker,
+  faHtml5,
+  faCss3Alt,
+  type IconDefinition,
+} from '@fortawesome/free-brands-svg-icons';
+
+interface Props {
+  language: string;
+}
+
+const { language } = Astro.props;
+const lang = language.toLowerCase().trim();
+
+// Map programming language to FontAwesome Brand SVG Icon
+let faIcon: IconDefinition | null = null;
+
+if (lang === 'typescript' || lang === 'ts') {
+  faIcon = faTypescript;
+} else if (lang === 'javascript' || lang === 'js') {
+  faIcon = faJs;
+} else if (lang === 'rust') {
+  faIcon = faRust;
+} else if (lang === 'python' || lang === 'py') {
+  faIcon = faPython;
+} else if (lang === 'vue' || lang === 'vuejs') {
+  faIcon = faVuejs;
+} else if (lang === 'react') {
+  faIcon = faReact;
+} else if (lang === 'go' || lang === 'golang') {
+  faIcon = faGolang;
+} else if (lang === 'node' || lang === 'nodejs') {
+  faIcon = faNodeJs;
+} else if (lang === 'php') {
+  faIcon = faPhp;
+} else if (lang === 'java') {
+  faIcon = faJava;
+} else if (lang === 'swift') {
+  faIcon = faSwift;
+} else if (lang === 'docker') {
+  faIcon = faDocker;
+} else if (lang === 'html' || lang === 'html5') {
+  faIcon = faHtml5;
+} else if (lang === 'css' || lang === 'css3') {
+  faIcon = faCss3Alt;
+}
+---
+
+{faIcon ? (
+  <svg
+    class="h-3 w-3 shrink-0"
+    viewBox={`0 0 ${faIcon.icon[0]} ${faIcon.icon[1]}`}
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d={faIcon.icon[4] as string} />
+  </svg>
+) : (
+  <svg
+    class="h-3 w-3 shrink-0"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <polyline points="16 18 22 12 16 6"></polyline>
+    <polyline points="8 6 2 12 8 18"></polyline>
+  </svg>
+)}

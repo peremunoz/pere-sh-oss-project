@@ -9,11 +9,15 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "add-contribution": "node scripts/add-contribution.mjs",
     "astro": "astro"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.4.2",
     "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^7.3.1"
   }
 }

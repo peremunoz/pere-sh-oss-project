@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Pere Muñoz | Open Source Contributions (oss.pere.sh)',
+  description = 'Curated registry of pull requests merged into production across open-source ecosystems, built with an autonomous agentic pipeline and verified with human-in-the-loop review.',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://oss.pere.sh');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/jpeg" href="/avatar.jpg" />
+    <link rel="apple-touch-icon" href="/avatar.jpg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+  <body class="min-h-screen bg-[#fafafa] text-zinc-900 antialiased selection:bg-blue-600 selection:text-white">
+    <div class="fixed inset-0 bg-grid pointer-events-none opacity-60 z-0"></div>
+    <div class="relative z-10 flex min-h-screen flex-col">
+      <slot />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+---
+import { profileConfig } from '../config';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="mt-auto border-t border-zinc-200/80 bg-white/70 py-8 text-xs font-mono text-zinc-500">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span class="text-zinc-900 font-medium">oss.pere.sh</span>
+      <span class="text-zinc-300">•</span>
+      <span class="text-zinc-600">{profileConfig.name}</span>
+      <span class="text-zinc-300">•</span>
+      <span class="text-zinc-400">{currentYear}</span>
+    </div>
+
+    <div class="flex items-center gap-4 text-zinc-600">
+      <a
+        href={profileConfig.links.website}
+        class="hover:text-zinc-900 transition-colors"
+      >
+        pere.sh ↗
+      </a>
+      <a
+        href={profileConfig.links.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-zinc-900 transition-colors"
+      >
+        GitHub ↗
+      </a>
+      {profileConfig.links.linkedin && (
+        <a
+          href={profileConfig.links.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-zinc-900 transition-colors"
+        >
+          LinkedIn ↗
+        </a>
+      )}
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 mt-4 pt-4 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-zinc-400">
+    <p>
+      Autonomous issue discovery & resolution via specialized Agent Skill • 100% human-verified and merged upstream.
+    </p>
+    <p>
+      Deployed statically to GitHub Pages.
+    </p>
+  </div>
+</footer>

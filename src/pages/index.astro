@@ -1,16 +1,28 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import ContributionsGrid from '../components/ContributionsGrid.astro';
+import Footer from '../components/Footer.astro';
+import { profileConfig } from '../config';
+import contributionsData from '../data/contributions.json';
+import type { Contribution } from '../types/contribution';
+
+// Load and cast contributions data
+const rawContributions = contributionsData as Contribution[];
+
+// Sort newest first by mergedAt date
+const contributions = [...rawContributions].sort((a, b) => {
+  return new Date(b.mergedAt).getTime() - new Date(a.mergedAt).getTime();
+});
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title={profileConfig.siteTitle}
+  description={profileConfig.siteDescription}
+>
+  <Header contributions={contributions} />
+  <main class="flex-1 flex flex-col">
+    <ContributionsGrid contributions={contributions} />
+  </main>
+  <Footer />
+</Layout>

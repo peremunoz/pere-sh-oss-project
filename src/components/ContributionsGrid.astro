@@ -1,0 +1,195 @@
+---
+import type { Contribution } from '../types/contribution';
+import ContributionCard from './ContributionCard.astro';
+import LanguageIcon from './LanguageIcon.astro';
+
+interface Props {
+  contributions: Contribution[];
+}
+
+const { contributions } = Astro.props;
+
+const allLanguages = Array.from(new Set(contributions.map((c) => c.language))).filter(Boolean);
+const filterOptions = ['all', ...allLanguages];
+---
+
+<section class="mx-auto max-w-5xl px-4 sm:px-6 py-6 flex-1">
+  <!-- Controls: Search input & Tag filters -->
+  <div class="space-y-4 mb-8">
+    <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+      <!-- Search input -->
+      <div class="relative flex-1 max-w-md">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-zinc-400">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <input
+          type="search"
+          id="contribution-search"
+          placeholder="Filter by repo, PR title, or language..."
+          class="w-full rounded-lg border border-zinc-200 bg-white py-2 pl-9 pr-4 text-sm text-zinc-900 placeholder-zinc-400 focus:border-zinc-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-zinc-400 font-mono transition-colors shadow-2xs"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+
+      <!-- Result count indicator -->
+      <div class="text-xs font-mono text-zinc-500">
+        Showing <span id="visible-count" class="text-zinc-900 font-semibold">{contributions.length}</span> of {contributions.length} merged PRs
+      </div>
+    </div>
+
+    <!-- Filter Pills (Languages only) -->
+    <div class="flex flex-wrap gap-2 items-center" id="filter-pills" role="tablist">
+      <span class="text-xs font-mono text-zinc-500 mr-1">Language:</span>
+      {filterOptions.map((opt, idx) => (
+        <button
+          type="button"
+          data-filter={opt.toLowerCase()}
+          class={`filter-btn inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono rounded-md border transition-all ${
+            idx === 0
+              ? 'bg-zinc-900 text-white border-zinc-900 font-medium active-filter shadow-xs'
+              : 'bg-white text-zinc-600 border-zinc-200 hover:text-zinc-900 hover:border-zinc-300 shadow-2xs'
+          }`}
+        >
+          <span>{opt === 'all' ? 'All' : opt}</span>
+          {opt !== 'all' && <LanguageIcon language={opt} />}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Cards Grid -->
+  <div id="contributions-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+    {contributions.map((contribution) => (
+      <ContributionCard contribution={contribution} />
+    ))}
+  </div>
+
+  <!-- Empty Search Results State -->
+  <div id="empty-state" class="hidden py-16 text-center">
+    <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 border border-zinc-200 text-zinc-400 mb-3">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <h3 class="text-base font-semibold text-zinc-800">No matching pull requests</h3>
+    <p class="mt-1 text-sm text-zinc-500 max-w-sm mx-auto">
+      No contributions match your current search query or active filter.
+    </p>
+    <button
+      type="button"
+      id="reset-filter-btn"
+      class="mt-4 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-xs font-mono bg-zinc-900 text-white hover:bg-zinc-800 transition-colors shadow-xs"
+    >
+      Reset filters
+    </button>
+  </div>
+</section>
+
+<!-- Client-side filter script (Pure Vanilla JS, 0 dependencies, safe DOM operations) -->
+<script>
+  function setupFilters() {
+    const searchInput = document.getElementById('contribution-search') as HTMLInputElement | null;
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const cards = document.querySelectorAll<HTMLElement>('.contribution-card');
+    const visibleCountEl = document.getElementById('visible-count');
+    const emptyStateEl = document.getElementById('empty-state');
+    const resetBtn = document.getElementById('reset-filter-btn');
+
+    let activeFilter = 'all';
+    let searchQuery = '';
+
+    function filterCards() {
+      let count = 0;
+
+      cards.forEach((card) => {
+        const repo = card.getAttribute('data-repo') || '';
+        const title = card.getAttribute('data-title') || '';
+        const lang = card.getAttribute('data-lang') || '';
+
+        const matchesSearch =
+          !searchQuery ||
+          repo.includes(searchQuery) ||
+          title.includes(searchQuery) ||
+          lang.includes(searchQuery);
+
+        const matchesTag =
+          activeFilter === 'all' ||
+          lang === activeFilter;
+
+        if (matchesSearch && matchesTag) {
+          card.classList.remove('hidden');
+          count++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (visibleCountEl) {
+        visibleCountEl.textContent = String(count);
+      }
+
+      if (emptyStateEl) {
+        if (count === 0) {
+          emptyStateEl.classList.remove('hidden');
+        } else {
+          emptyStateEl.classList.add('hidden');
+        }
+      }
+    }
+
+    // Search input listener
+    searchInput?.addEventListener('input', (e) => {
+      const target = e.target as HTMLInputElement;
+      searchQuery = target.value.trim().toLowerCase();
+      filterCards();
+    });
+
+    // Tag buttons listeners
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach((b) => {
+          b.classList.remove('bg-zinc-900', 'text-white', 'border-zinc-900', 'font-medium', 'active-filter', 'shadow-xs');
+          b.classList.add('bg-white', 'text-zinc-600', 'border-zinc-200', 'shadow-2xs');
+        });
+
+        btn.classList.remove('bg-white', 'text-zinc-600', 'border-zinc-200', 'shadow-2xs');
+        btn.classList.add('bg-zinc-900', 'text-white', 'border-zinc-900', 'font-medium', 'active-filter', 'shadow-xs');
+
+        activeFilter = btn.getAttribute('data-filter') || 'all';
+        filterCards();
+      });
+    });
+
+    // Reset button
+    resetBtn?.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      searchQuery = '';
+      activeFilter = 'all';
+
+      filterButtons.forEach((b) => {
+        const isAll = b.getAttribute('data-filter') === 'all';
+        b.classList.toggle('bg-zinc-900', isAll);
+        b.classList.toggle('text-white', isAll);
+        b.classList.toggle('border-zinc-900', isAll);
+        b.classList.toggle('font-medium', isAll);
+        b.classList.toggle('active-filter', isAll);
+        b.classList.toggle('shadow-xs', isAll);
+
+        b.classList.toggle('bg-white', !isAll);
+        b.classList.toggle('text-zinc-600', !isAll);
+        b.classList.toggle('border-zinc-200', !isAll);
+        b.classList.toggle('shadow-2xs', !isAll);
+      });
+
+      filterCards();
+    });
+  }
+
+  // Run on page load
+  setupFilters();
+  // Support Astro View Transitions if ever enabled
+  document.addEventListener('astro:page-load', setupFilters);
+</script>
