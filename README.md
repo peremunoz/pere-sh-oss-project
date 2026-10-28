@@ -1,8 +1,6 @@
-# oss.pere.sh
+# Open Source Showcase — [oss.pere.sh](https://oss.pere.sh)
 
-A minimalist showroom of open-source pull requests merged into production across various ecosystems.
-
-Live site: **[oss.pere.sh](https://oss.pere.sh)**
+A minimalist showroom of open-source pull requests merged into production.
 
 ---
 
