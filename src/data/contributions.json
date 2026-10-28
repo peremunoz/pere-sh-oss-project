@@ -1,5 +1,21 @@
 [
   {
+    "id": "runmaestro-maestro-1926",
+    "repo": "RunMaestro/Maestro",
+    "repoUrl": "https://github.com/RunMaestro/Maestro",
+    "prNumber": 1926,
+    "prTitle": "fix(group-chat): pass full-access permissionMode for writable participant spawns",
+    "prUrl": "https://github.com/RunMaestro/Maestro/pull/1926",
+    "status": "merged",
+    "mergedAt": "2026-10-28",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 66,
+      "deletions": 1,
+      "filesChanged": 2
+    }
+  },
+  {
     "id": "reticlehq-reticle-1953",
     "repo": "reticlehq/reticle",
     "repoUrl": "https://github.com/reticlehq/reticle",
