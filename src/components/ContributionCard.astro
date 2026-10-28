@@ -89,7 +89,7 @@ const formattedDate = new Date(contribution.mergedAt).toLocaleDateString('en-US'
       </time>
 
       {contribution.stats && (
-        <div class="flex items-center gap-1.5">
+        <div class="flex items-baseline gap-1.5">
           {contribution.stats.additions > 0 && (
             <span class="text-emerald-600 font-medium">+{contribution.stats.additions}</span>
           )}
