@@ -1,0 +1,66 @@
+[
+  {
+    "id": "reticlehq-reticle-1953",
+    "repo": "reticlehq/reticle",
+    "repoUrl": "https://github.com/reticlehq/reticle",
+    "prNumber": 1953,
+    "prTitle": "fix(server): use Chrome in ~/Applications on macOS (#1952)",
+    "prUrl": "https://github.com/reticlehq/reticle/pull/1953",
+    "status": "merged",
+    "mergedAt": "2026-10-27",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 147,
+      "deletions": 20,
+      "filesChanged": 4
+    }
+  },
+  {
+    "id": "snapotter-hq-SnapOtter-4057",
+    "repo": "snapotter-hq/SnapOtter",
+    "repoUrl": "https://github.com/snapotter-hq/SnapOtter",
+    "prNumber": 4057,
+    "prTitle": "fix(barcode-generate): rethrow 5xx storage and OOM faults and strip internal paths (#4050)",
+    "prUrl": "https://github.com/snapotter-hq/SnapOtter/pull/4057",
+    "status": "merged",
+    "mergedAt": "2026-10-27",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 85,
+      "deletions": 6,
+      "filesChanged": 2
+    }
+  },
+  {
+    "id": "chipfighter-context-attachment-manager-14",
+    "repo": "chipfighter/context-attachment-manager",
+    "repoUrl": "https://github.com/chipfighter/context-attachment-manager",
+    "prNumber": 14,
+    "prTitle": "fix(panel): keep keyboard focus inside the image preview dialog",
+    "prUrl": "https://github.com/chipfighter/context-attachment-manager/pull/14",
+    "status": "merged",
+    "mergedAt": "2026-10-26",
+    "language": "Html",
+    "stats": {
+      "additions": 178,
+      "deletions": 2,
+      "filesChanged": 2
+    }
+  },
+  {
+    "id": "Tencent-teamai-cli-1381",
+    "repo": "Tencent/teamai-cli",
+    "repoUrl": "https://github.com/Tencent/teamai-cli",
+    "prNumber": 1381,
+    "prTitle": "fix(import): time out stalled GitHub organization requests (#1377)",
+    "prUrl": "https://github.com/Tencent/teamai-cli/pull/1381",
+    "status": "merged",
+    "mergedAt": "2026-10-26",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 22,
+      "deletions": 11,
+      "filesChanged": 4
+    }
+  }
+]
