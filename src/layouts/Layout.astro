@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { profileConfig } from '../config';
 
 interface Props {
   title?: string;
@@ -7,11 +8,43 @@ interface Props {
 }
 
 const {
-  title = 'Pere Muñoz | Open Source Contributions (oss.pere.sh)',
-  description = 'Curated registry of pull requests merged into production across open-source ecosystems, built with an autonomous agentic pipeline and verified with human-in-the-loop review.',
+  title = `${profileConfig.name} | Open Source Contributions (oss.pere.sh)`,
+  description = profileConfig.siteDescription,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://oss.pere.sh');
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://pere.sh/#person',
+      name: profileConfig.name,
+      url: profileConfig.links.website,
+      sameAs: [
+        profileConfig.links.github,
+        profileConfig.links.linkedin,
+      ].filter(Boolean),
+      jobTitle: 'Software Engineer & Open Source Contributor',
+      description: profileConfig.bio,
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': 'https://oss.pere.sh/#webpage',
+      url: 'https://oss.pere.sh/',
+      name: title,
+      description: description,
+      about: { '@id': 'https://pere.sh/#person' },
+      isPartOf: {
+        '@type': 'WebSite',
+        '@id': 'https://oss.pere.sh/#website',
+        name: 'oss.pere.sh',
+        url: 'https://oss.pere.sh/',
+      },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -40,6 +73,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://oss.pere
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
+
+    <!-- AI Agent & LLM Discovery (llms.txt standard) -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Summary" />
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Context" />
+
+    <!-- Schema.org JSON-LD for AI Search & Crawlers -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#ffffff" />

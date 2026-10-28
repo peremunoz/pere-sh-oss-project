@@ -1,0 +1,11 @@
+# robots.txt for oss.pere.sh
+User-agent: *
+Allow: /
+
+# LLM and AI Agent documentation
+# Standard: https://llmstxt.org/
+# Clean markdown summary for LLMs: https://oss.pere.sh/llms.txt
+# Full markdown context for LLMs: https://oss.pere.sh/llms-full.txt
+
+Sitemap: https://oss.pere.sh/sitemap.xml
+
