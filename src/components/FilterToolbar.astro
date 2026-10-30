@@ -1,0 +1,83 @@
+---
+import type { Contribution } from '../types/contribution';
+import LanguageIcon from './LanguageIcon.astro';
+
+interface Props {
+  contributions: Contribution[];
+  statusOptions: string[];
+  languageOptions: string[];
+}
+
+const { contributions, statusOptions, languageOptions } = Astro.props;
+---
+
+<div class="space-y-4 mb-8">
+  <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+    <!-- Search input -->
+    <div class="relative flex-1 max-w-md">
+      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-zinc-400">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+      <input
+        type="search"
+        id="contribution-search"
+        placeholder="Filter by repo, PR title, language, or status..."
+        class="w-full rounded-lg border border-zinc-200 bg-white py-2 pl-9 pr-4 text-sm text-zinc-900 placeholder-zinc-400 focus:border-zinc-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-zinc-400 font-mono transition-colors shadow-2xs"
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+
+    <!-- Result count indicator -->
+    <div class="text-xs font-mono text-zinc-500">
+      Showing <span id="visible-count" class="text-zinc-900 font-semibold">{contributions.length}</span> of {contributions.length} pull requests
+    </div>
+  </div>
+
+  <!-- Filter Pills: Status & Language -->
+  <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 pt-1">
+    <!-- Status Pills -->
+    <div class="flex flex-wrap gap-1.5 items-center" id="status-pills" role="tablist" aria-label="Filter by Status">
+      <span class="text-xs font-mono text-zinc-500 mr-1">Status:</span>
+      {statusOptions.map((st, idx) => {
+        const count = st === 'all' ? contributions.length : contributions.filter((c) => c.status === st).length;
+        return (
+          <button
+            type="button"
+            data-status-filter={st.toLowerCase()}
+            class={`status-filter-btn inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono rounded-md border transition-all ${
+              idx === 0
+                ? 'bg-zinc-900 text-white border-zinc-900 font-medium active-status shadow-xs'
+                : 'bg-white text-zinc-600 border-zinc-200 hover:text-zinc-900 hover:border-zinc-300 shadow-2xs'
+            }`}
+          >
+            <span>{st === 'all' ? 'All' : st.charAt(0).toUpperCase() + st.slice(1)}</span>
+            <span class="text-[10px] opacity-75 font-normal">({count})</span>
+          </button>
+        );
+      })}
+    </div>
+
+    <!-- Language Pills -->
+    <div class="flex flex-wrap gap-1.5 items-center" id="language-pills" role="tablist" aria-label="Filter by Language">
+      <span class="text-xs font-mono text-zinc-500 mr-1">Language:</span>
+      {languageOptions.map((opt, idx) => (
+        <button
+          type="button"
+          data-lang-filter={opt.toLowerCase()}
+          class={`lang-filter-btn inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono rounded-md border transition-all ${
+            idx === 0
+              ? 'bg-zinc-900 text-white border-zinc-900 font-medium active-lang shadow-xs'
+              : 'bg-white text-zinc-600 border-zinc-200 hover:text-zinc-900 hover:border-zinc-300 shadow-2xs'
+          }`}
+        >
+          <span>{opt === 'all' ? 'All' : opt}</span>
+          {opt !== 'all' && <LanguageIcon language={opt} />}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
+

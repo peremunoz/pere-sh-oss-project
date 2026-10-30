@@ -1,0 +1,42 @@
+---
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { profileConfig } from '../config';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`flex items-center gap-1 translate-y-0.5 ${className}`}>
+  {profileConfig.links.github && (
+    <a
+      href={profileConfig.links.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center p-1.5 rounded-md text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100 transition-colors"
+      title="GitHub Profile"
+      aria-label="GitHub Profile"
+    >
+      <svg class="h-4 w-4 fill-current" viewBox={`0 0 ${faGithub.icon[0]} ${faGithub.icon[1]}`} aria-hidden="true">
+        <path d={faGithub.icon[4] as string} />
+      </svg>
+    </a>
+  )}
+  {profileConfig.links.linkedin && (
+    <a
+      href={profileConfig.links.linkedin}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center p-1.5 rounded-md text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100 transition-colors"
+      title="LinkedIn Profile"
+      aria-label="LinkedIn Profile"
+    >
+      <svg class="h-4 w-4 fill-current" viewBox={`0 0 ${faLinkedin.icon[0]} ${faLinkedin.icon[1]}`} aria-hidden="true">
+        <path d={faLinkedin.icon[4] as string} />
+      </svg>
+    </a>
+  )}
+</div>
+

@@ -1,0 +1,20 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`relative max-w-3xl rounded-lg border border-zinc-200/80 bg-zinc-100/50 px-3.5 py-2.5 flex items-start gap-2.5 ${className}`}>
+  <!-- Minimal Feather Stroke Quote Icon (Consistent with pipeline icons) -->
+  <svg class="h-3.5 w-3.5 text-zinc-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2H4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2 0 4-1.5 6-3 8"></path>
+    <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2h-4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2 0 4-1.5 6-3 8"></path>
+  </svg>
+  <p class="text-xs sm:text-[13px] text-zinc-700 leading-snug">
+    <span class="font-medium text-zinc-900">“AI compute is ephemeral; open-source software is forever.</span>
+    <span class="text-zinc-600"> My goal is channeling raw AI resources into durable, real-world code that outlasts the hype.”</span>
+  </p>
+</div>
+

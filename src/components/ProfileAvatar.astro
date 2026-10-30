@@ -1,0 +1,27 @@
+---
+import { profileConfig } from '../config';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`relative shrink-0 group ${className}`}>
+  <div class="relative h-20 w-20 sm:h-24 sm:w-24 rounded-2xl overflow-hidden ring-2 ring-zinc-300 ring-offset-2 ring-offset-white bg-zinc-100 flex items-center justify-center shadow-md">
+    <img
+      src={profileConfig.avatarUrl}
+      alt={profileConfig.name}
+      class="h-full w-full object-cover"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+    />
+    <!-- Elegant fallback avatar displayed if avatar.jpg is not found -->
+    <div class="hidden absolute inset-0 bg-gradient-to-br from-zinc-100 to-zinc-200 flex flex-col items-center justify-center text-zinc-700 font-mono">
+      <span class="text-xl sm:text-2xl font-bold tracking-wider">{profileConfig.avatarFallbackInitials}</span>
+      <span class="text-[9px] uppercase tracking-widest text-zinc-400 mt-0.5">DEV</span>
+    </div>
+  </div>
+  <div class="absolute -bottom-1 -right-1 bg-emerald-500 border-2 border-white rounded-full h-4 w-4 shadow-xs" title="Active Contributor"></div>
+</div>
+

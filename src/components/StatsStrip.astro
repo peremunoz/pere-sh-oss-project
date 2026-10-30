@@ -1,0 +1,56 @@
+---
+import type { Contribution } from '../types/contribution';
+
+interface Props {
+  contributions: Contribution[];
+}
+
+const { contributions } = Astro.props;
+
+// Calculate live aggregate stats from contributions
+const totalMerged = contributions.filter((c) => c.status === 'merged').length;
+const totalOpen = contributions.filter((c) => c.status === 'open' || c.status === 'draft').length;
+const uniqueRepos = new Set(contributions.map((c) => c.repo)).size;
+const totalAdditions = contributions.reduce((acc, c) => acc + (c.stats?.additions || 0), 0);
+const totalDeletions = contributions.reduce((acc, c) => acc + (c.stats?.deletions || 0), 0);
+const totalFilesChanged = contributions.reduce((acc, c) => acc + (c.stats?.filesChanged || 0), 0);
+---
+
+<div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
+  <div class="bg-white border border-zinc-200/90 rounded-xl p-3 sm:p-4 shadow-xs">
+    <div class="text-xs font-mono uppercase tracking-wider text-zinc-500">Merged PRs</div>
+    <div class="mt-1 text-2xl font-bold font-mono text-purple-700">{totalMerged}</div>
+    <div class="text-[11px] text-zinc-400 mt-0.5">
+      {totalOpen > 0 ? `${totalOpen} active in review / open` : 'Approved & live in production'}
+    </div>
+  </div>
+
+  <div class="bg-white border border-zinc-200/90 rounded-xl p-3 sm:p-4 shadow-xs">
+    <div class="text-xs font-mono uppercase tracking-wider text-zinc-500">Repositories</div>
+    <div class="mt-1 text-2xl font-bold font-mono text-zinc-900">{uniqueRepos}</div>
+    <div class="text-[11px] text-zinc-400 mt-0.5">Open source codebases</div>
+  </div>
+
+  <div class="bg-white border border-zinc-200/90 rounded-xl p-3 sm:p-4 shadow-xs">
+    <div class="text-xs font-mono uppercase tracking-wider text-zinc-500">Diff Impact</div>
+    <div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
+      <span class="text-2xl font-bold font-mono text-emerald-600">+{totalAdditions}</span>
+      <span class="text-rose-500 text-lg font-medium font-mono">-{totalDeletions}</span>
+      {totalFilesChanged > 0 && (
+        <span class="text-xs font-mono text-zinc-400 font-normal">
+          ({totalFilesChanged} files)
+        </span>
+      )}
+    </div>
+    <div class="text-[11px] text-zinc-400 mt-0.5">Across all contributions</div>
+  </div>
+
+  <div class="bg-white border border-zinc-200/90 rounded-xl p-3 sm:p-4 shadow-xs">
+    <div class="text-xs font-mono uppercase tracking-wider text-zinc-500">Delivery Model</div>
+    <div class="mt-1 text-base sm:text-lg font-bold font-mono text-blue-700 flex items-center gap-1.5 mt-1.5">
+      <span>Agent + Review</span>
+    </div>
+    <div class="text-[11px] text-zinc-400 mt-0.5">Autonomous with human oversight</div>
+  </div>
+</div>
+

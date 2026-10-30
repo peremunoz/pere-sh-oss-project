@@ -1,0 +1,364 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<!-- Workflow summary pills with subtle animated energy pulse -->
+<div id="pipeline-flow-container" class={`relative pt-3 flex flex-col lg:flex-row items-stretch lg:items-center gap-2 lg:gap-2.5 text-xs font-mono text-zinc-600 w-full max-w-full ${className}`}>
+  <!-- Dual Electric Sparks with Comet Trail (Animated) -->
+  <div id="pipeline-spark-top" class="pipeline-spark" aria-hidden="true"></div>
+  <div id="pipeline-spark-bottom" class="pipeline-spark" aria-hidden="true"></div>
+
+  <!-- AI Agent Stage -->
+  <div id="flow-group-agent" class="relative flex items-center justify-between sm:justify-start gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-dashed border-zinc-300 bg-white/40 transition-colors duration-300 w-full sm:w-auto max-w-full">
+    <span class="absolute -top-2 left-2.5 px-1 bg-[#fafafa] text-[10px] font-mono uppercase tracking-wider text-indigo-600 font-semibold select-none">
+      AI Agent
+    </span>
+    <span
+      id="flow-step-discovery"
+      class="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-2 py-0.5 rounded-md bg-white border border-zinc-200 shadow-2xs text-zinc-700 text-[11px] sm:text-xs transition-all duration-300 shrink-0 select-none"
+    >
+      <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5 text-indigo-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+      </svg>
+      Issue Discovery
+    </span>
+    <span class="text-zinc-400 select-none">→</span>
+    <span
+      id="flow-step-implementation"
+      class="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-2 py-0.5 rounded-md bg-white border border-zinc-200 shadow-2xs text-zinc-700 text-[11px] sm:text-xs transition-all duration-300 shrink-0 select-none"
+    >
+      <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5 text-blue-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+      </svg>
+      Implementation
+    </span>
+  </div>
+
+  <!-- Bridge Connector between AI Agent and Human Stages -->
+  <div id="flow-bridge-connector" class="text-zinc-400 font-medium flex items-center justify-center self-center lg:self-auto my-0.5 lg:my-0 select-none">
+    <span id="pipeline-bridge-arrow" class="inline-block transition-transform duration-200">
+      <span class="lg:hidden text-zinc-400 text-xs font-bold">↓</span>
+      <span class="hidden lg:inline text-zinc-400 font-medium">→</span>
+    </span>
+  </div>
+
+  <!-- Human Stage -->
+  <div id="flow-group-human" class="relative flex items-center justify-between sm:justify-start gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-dashed border-zinc-300 bg-white/40 transition-colors duration-300 w-full sm:w-auto max-w-full">
+    <span class="absolute -top-2 left-2.5 px-1 bg-[#fafafa] text-[10px] font-mono uppercase tracking-wider text-amber-700 font-semibold select-none">
+      Human
+    </span>
+    <span
+      id="flow-step-verification"
+      class="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-2 py-0.5 rounded-md bg-white border border-zinc-200 shadow-2xs text-zinc-700 text-[11px] sm:text-xs transition-all duration-300 shrink-0 select-none"
+    >
+      <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5 text-amber-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+      Verification
+    </span>
+    <span class="text-zinc-400 select-none">→</span>
+    <span
+      id="flow-step-merged"
+      class="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-2 py-0.5 rounded-md bg-purple-50 border border-purple-200 text-purple-700 shadow-2xs text-[11px] sm:text-xs font-medium transition-all duration-300 origin-center shrink-0 select-none"
+    >
+      <!-- Clean Git Merge Icon -->
+      <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5 text-purple-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="18" r="3"></circle>
+        <circle cx="6" cy="6" r="3"></circle>
+        <path d="M6 21V9a9 9 0 0 0 9 9"></path>
+      </svg>
+      Merged to Production
+    </span>
+  </div>
+</div>
+
+<style>
+  /* Electric Sparks with Comet Trail */
+  .pipeline-spark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3.5px;
+    height: 3.5px;
+    margin-left: -1.75px;
+    margin-top: -1.75px;
+    border-radius: 9999px;
+    background-color: #ffffff;
+    box-shadow:
+      0 0 3px 1px #ffffff,
+      0 0 6px 1.5px #818cf8,
+      -3px 0 5px 1px rgba(99, 102, 241, 0.8),
+      -7px 0 7px 1px rgba(168, 85, 247, 0.5),
+      -12px 0 9px 1.5px rgba(168, 85, 247, 0.25);
+    pointer-events: none;
+    z-index: 30;
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  /* Pipeline Energy Pulse Highlights */
+  .flow-glow-indigo {
+    border-color: rgba(99, 102, 241, 0.7) !important;
+    box-shadow: 0 0 12px 1px rgba(99, 102, 241, 0.3), 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    background-color: #faf5ff !important;
+    transform: translateY(-1px) scale(1.015);
+  }
+
+  .flow-glow-blue {
+    border-color: rgba(59, 130, 246, 0.7) !important;
+    box-shadow: 0 0 12px 1px rgba(59, 130, 246, 0.3), 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    background-color: #eff6ff !important;
+    transform: translateY(-1px) scale(1.015);
+  }
+
+  .flow-glow-amber {
+    border-color: rgba(245, 158, 11, 0.7) !important;
+    box-shadow: 0 0 12px 1px rgba(245, 158, 11, 0.3), 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    background-color: #fffbeb !important;
+    transform: translateY(-1px) scale(1.015);
+  }
+
+  .flow-celebrate {
+    border-color: rgba(168, 85, 247, 0.85) !important;
+    box-shadow: 0 0 16px 2px rgba(168, 85, 247, 0.4), 0 2px 6px rgba(168, 85, 247, 0.15) !important;
+    background-color: #f3e8ff !important;
+    transform: translateY(-1px) scale(1.025);
+  }
+</style>
+
+<script>
+  function setupPipelineAnimation() {
+    const container = document.getElementById('pipeline-flow-container');
+    const sparkTop = document.getElementById('pipeline-spark-top');
+    const sparkBottom = document.getElementById('pipeline-spark-bottom');
+    const stepDiscovery = document.getElementById('flow-step-discovery');
+    const stepImplementation = document.getElementById('flow-step-implementation');
+    const stepVerification = document.getElementById('flow-step-verification');
+    const stepMerged = document.getElementById('flow-step-merged');
+    const bridgeArrow = document.getElementById('pipeline-bridge-arrow');
+
+    if (!container || !sparkTop || !sparkBottom || !stepDiscovery || !stepImplementation || !stepVerification || !stepMerged) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let isRunning = false;
+
+    function runCycle() {
+      if (document.hidden || isRunning) return;
+      isRunning = true;
+
+      const cRect = container!.getBoundingClientRect();
+      const getRel = (el: HTMLElement) => {
+        const r = el.getBoundingClientRect();
+        const left = r.left - cRect.left;
+        const top = r.top - cRect.top;
+        return {
+          left,
+          top,
+          right: left + r.width,
+          bottom: top + r.height,
+          cx: left + r.width / 2,
+          cy: top + r.height / 2,
+        };
+      };
+
+      const d = getRel(stepDiscovery!);
+      const i = getRel(stepImplementation!);
+      const v = getRel(stepVerification!);
+      const m = getRel(stepMerged!);
+
+      // Detect if row 2 (Human) is wrapped/stacked below row 1 (AI Agent)
+      const isWrapped = v.top > i.bottom + 4;
+
+      // Dynamically update the bridge arrow icon to match actual layout orientation
+      if (bridgeArrow) {
+        bridgeArrow.innerHTML = isWrapped
+          ? '<span class="text-zinc-400 text-xs font-bold">↓</span>'
+          : '<span class="text-zinc-400 font-medium">→</span>';
+      }
+
+      const pad = 0.5;
+
+      // Helper to generate parallel rail segments for each card
+      const getRails = (r: ReturnType<typeof getRel>) => {
+        const topY = r.top - pad;
+        const bottomY = r.bottom + pad;
+
+        const topPoints = [
+          { x: r.left, y: r.cy, opacity: 1 },
+          { x: r.left + 3, y: topY, opacity: 1 },
+          { x: r.cx, y: topY, opacity: 1 },
+          { x: r.right - 3, y: topY, opacity: 1 },
+          { x: r.right, y: r.cy, opacity: 1 },
+        ];
+
+        const bottomPoints = [
+          { x: r.left, y: r.cy, opacity: 1 },
+          { x: r.left + 3, y: bottomY, opacity: 1 },
+          { x: r.cx, y: bottomY, opacity: 1 },
+          { x: r.right - 3, y: bottomY, opacity: 1 },
+          { x: r.right, y: r.cy, opacity: 1 },
+        ];
+
+        return { topPoints, bottomPoints };
+      };
+
+      // Helper for straight horizontal bridges between cards
+      const getStraightBridge = (r1: ReturnType<typeof getRel>, r2: ReturnType<typeof getRel>) => {
+        const midX = (r1.right + r2.left) / 2;
+        const midY = (r1.cy + r2.cy) / 2;
+        const pts = [
+          { x: r1.right, y: r1.cy },
+          { x: midX, y: midY },
+          { x: r2.left, y: r2.cy },
+        ];
+        return {
+          topPoints: pts.map(p => ({ ...p, opacity: 1 })),
+          bottomPoints: pts.map(p => ({ ...p, opacity: 0 })),
+        };
+      };
+
+      // Clamped gentle spawn inside container (never negative coordinates)
+      const startX = Math.max(4, d.left - 24);
+      const startY = d.cy - 6;
+      const startFloat = [
+        { x: startX, y: startY },
+        { x: startX + 8, y: startY - 8 },
+        { x: startX + 16, y: startY + 8 },
+        { x: d.left, y: d.cy },
+      ];
+
+      const r1 = getRails(d);
+      const b1 = getStraightBridge(d, i);
+      const r2 = getRails(i);
+
+      // Bridge from Step 2 (Implementation) to Step 3 (Verification)
+      let b2Top: Array<{ x: number; y: number; opacity: number }>;
+      let b2Bottom: Array<{ x: number; y: number; opacity: number }>;
+
+      if (isWrapped) {
+        // Vertical S-curve path when wrapped on smaller displays
+        const turnX = Math.min(i.right + 12, cRect.width - 10);
+        const entryX = Math.max(4, v.left - 12);
+        const midY = (i.bottom + v.top) / 2;
+
+        const path = [
+          { x: i.right, y: i.cy },
+          { x: turnX, y: i.cy },
+          { x: turnX, y: midY },
+          { x: entryX, y: midY },
+          { x: entryX, y: v.cy },
+          { x: v.left, y: v.cy },
+        ];
+        b2Top = path.map(p => ({ ...p, opacity: 1 }));
+        b2Bottom = path.map(p => ({ ...p, opacity: 0 }));
+      } else {
+        const midX = (i.right + v.left) / 2;
+        const midY = (i.cy + v.cy) / 2;
+        const path = [
+          { x: i.right, y: i.cy },
+          { x: midX, y: midY },
+          { x: v.left, y: v.cy },
+        ];
+        b2Top = path.map(p => ({ ...p, opacity: 1 }));
+        b2Bottom = path.map(p => ({ ...p, opacity: 0 }));
+      }
+
+      const r3 = getRails(v);
+      const b3 = getStraightBridge(v, m);
+      const r4 = getRails(m);
+
+      // Assemble full keyframe point sequences
+      const fullTop = [
+        ...startFloat.map(p => ({ ...p, opacity: 1 })),
+        ...r1.topPoints,
+        ...b1.topPoints,
+        ...r2.topPoints,
+        ...b2Top,
+        ...r3.topPoints,
+        ...b3.topPoints,
+        ...r4.topPoints,
+      ];
+
+      const fullBottom = [
+        ...startFloat.map(p => ({ ...p, opacity: 0 })),
+        ...r1.bottomPoints,
+        ...b1.bottomPoints,
+        ...r2.bottomPoints,
+        ...b2Bottom,
+        ...r3.bottomPoints,
+        ...b3.bottomPoints,
+        ...r4.bottomPoints,
+      ];
+
+      // Format as Web Animations API keyframes
+      const keyframesTop = fullTop.map(p => ({
+        transform: `translate3d(${p.x}px, ${p.y}px, 0)`,
+        opacity: p.opacity,
+      }));
+
+      const keyframesBottom = fullBottom.map(p => ({
+        transform: `translate3d(${p.x}px, ${p.y}px, 0)`,
+        opacity: p.opacity,
+      }));
+
+      // High-performance continuous travel: 12.6s for graceful visual tracking
+      const duration = 12600;
+
+      const animT = sparkTop!.animate(keyframesTop, {
+        duration,
+        easing: 'linear',
+        fill: 'none',
+      });
+
+      const animB = sparkBottom!.animate(keyframesBottom, {
+        duration,
+        easing: 'linear',
+        fill: 'none',
+      });
+
+      // Synchronize visual card glows along the path
+      // Discovery card glow (~10% to ~28%)
+      setTimeout(() => stepDiscovery?.classList.add('flow-glow-indigo'), duration * 0.10);
+      setTimeout(() => stepDiscovery?.classList.remove('flow-glow-indigo'), duration * 0.28);
+
+      // Implementation card glow (~32% to ~50%)
+      setTimeout(() => stepImplementation?.classList.add('flow-glow-blue'), duration * 0.32);
+      setTimeout(() => stepImplementation?.classList.remove('flow-glow-blue'), duration * 0.50);
+
+      // Verification card glow (~54% to ~72%)
+      setTimeout(() => stepVerification?.classList.add('flow-glow-amber'), duration * 0.54);
+      setTimeout(() => stepVerification?.classList.remove('flow-glow-amber'), duration * 0.72);
+
+      // Final celebration pulse on Merged card at fuse point (~96%)
+      setTimeout(() => {
+        stepMerged?.classList.add('flow-celebrate');
+      }, duration * 0.96);
+
+      setTimeout(() => {
+        stepMerged?.classList.remove('flow-celebrate');
+      }, duration * 0.96 + 1400);
+
+      animB.onfinish = () => {
+        isRunning = false;
+      };
+    }
+
+    // Initial trigger after 1.8s
+    setTimeout(runCycle, 1800);
+
+    // Repeat with longer pause between runs: 12.6s journey + 6.5s rest = 19.1s cycle
+    const intervalId = setInterval(runCycle, 19100);
+
+    document.addEventListener('astro:before-swap', () => clearInterval(intervalId), { once: true });
+  }
+
+  setupPipelineAnimation();
+  document.addEventListener('astro:page-load', setupPipelineAnimation);
+</script>
+
