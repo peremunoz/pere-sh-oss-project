@@ -1,6 +1,7 @@
 ---
 import type { Contribution } from '../types/contribution';
 import LanguageIcon from './LanguageIcon.astro';
+import ContributionTimeline from './ContributionTimeline.astro';
 
 interface Props {
   contribution: Contribution;
@@ -38,27 +39,10 @@ const statusConfig = {
 
 const currentStatus = (contribution.status || 'open') as keyof typeof statusConfig;
 const statusInfo = statusConfig[currentStatus] || statusConfig.open;
-
-// Choose relevant date depending on status
-const relevantDateStr =
-  (contribution.status === 'merged' ? contribution.mergedAt : null) ||
-  (contribution.status === 'closed' ? contribution.closedAt : null) ||
-  contribution.createdAt ||
-  contribution.updatedAt ||
-  contribution.mergedAt;
-
-const formattedDate = relevantDateStr
-  ? new Date(relevantDateStr).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-      timeZone: 'UTC',
-    })
-  : 'Recent';
 ---
 
 <article
-  class="contribution-card group relative flex flex-col justify-between rounded-xl border border-zinc-200/90 bg-white p-5 transition-all duration-200 hover:border-zinc-300 hover:shadow-md"
+  class="contribution-card group relative flex flex-col justify-between rounded-xl border border-zinc-200/90 bg-white p-5 transition-all duration-200 hover:border-zinc-300 hover:shadow-md hover:z-20"
   data-repo={contribution.repo.toLowerCase()}
   data-title={contribution.prTitle.toLowerCase()}
   data-lang={contribution.language.toLowerCase()}
@@ -150,10 +134,8 @@ const formattedDate = relevantDateStr
 
     <!-- Date & Diff Stats -->
     <div class="flex items-center justify-between text-xs font-mono text-zinc-500 pt-0.5">
-      <time datetime={relevantDateStr || ''} class="text-zinc-600 flex items-center gap-1">
-        <span class="text-zinc-400 font-normal">{statusInfo.dateLabel}</span>
-        <span>{formattedDate}</span>
-      </time>
+      <!-- Date with Handcrafted Light Git Timeline Tooltip -->
+      <ContributionTimeline contribution={contribution} dateLabel={statusInfo.dateLabel} />
 
       {contribution.stats && (
         <div class="flex items-baseline gap-1.5">
