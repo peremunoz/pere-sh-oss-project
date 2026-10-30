@@ -13,7 +13,10 @@
       "additions": 66,
       "deletions": 1,
       "filesChanged": 2
-    }
+    },
+    "createdAt": "2026-10-26",
+    "updatedAt": "2026-10-28",
+    "closedAt": "2026-10-28"
   },
   {
     "id": "reticlehq-reticle-1953",
@@ -29,7 +32,10 @@
       "additions": 147,
       "deletions": 20,
       "filesChanged": 4
-    }
+    },
+    "createdAt": "2026-10-27",
+    "updatedAt": "2026-10-27",
+    "closedAt": "2026-10-27"
   },
   {
     "id": "snapotter-hq-SnapOtter-4057",
@@ -45,7 +51,10 @@
       "additions": 85,
       "deletions": 6,
       "filesChanged": 2
-    }
+    },
+    "createdAt": "2026-10-25",
+    "updatedAt": "2026-10-27",
+    "closedAt": "2026-10-27"
   },
   {
     "id": "chipfighter-context-attachment-manager-14",
@@ -61,7 +70,10 @@
       "additions": 178,
       "deletions": 2,
       "filesChanged": 2
-    }
+    },
+    "createdAt": "2026-10-26",
+    "updatedAt": "2026-10-26",
+    "closedAt": "2026-10-26"
   },
   {
     "id": "Tencent-teamai-cli-1381",
@@ -71,12 +83,15 @@
     "prTitle": "fix(import): time out stalled GitHub organization requests (#1377)",
     "prUrl": "https://github.com/Tencent/teamai-cli/pull/1381",
     "status": "merged",
-    "mergedAt": "2026-10-26",
+    "mergedAt": "2026-10-25",
     "language": "TypeScript",
     "stats": {
       "additions": 22,
       "deletions": 11,
       "filesChanged": 4
-    }
+    },
+    "createdAt": "2026-10-25",
+    "updatedAt": "2026-10-26",
+    "closedAt": "2026-10-25"
   }
 ]
