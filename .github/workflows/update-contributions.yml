@@ -1,0 +1,97 @@
+name: Sync Contributions via GitHub GraphQL
+
+on:
+  schedule:
+    # Run automatically every day at 04:00 UTC
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run sync without saving changes (dry run)'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  sync-and-deploy:
+    name: Sync Contributions & Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Uses default GITHUB_TOKEN so git commit/push has write permissions to this repo
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12.16.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Sync contributions from GitHub GraphQL API
+        env:
+          # Uses read-only CONTRIBUTIONS_TOKEN to search public repositories
+          GH_TOKEN: ${{ secrets.CONTRIBUTIONS_TOKEN }}
+        run: |
+          EXTRA_ARGS=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            EXTRA_ARGS="--dry-run"
+          fi
+          node scripts/sync-contributions.mjs $EXTRA_ARGS
+
+      - name: Commit and push changes
+        id: commit_step
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet src/data/contributions.json; then
+            echo "No contribution changes detected."
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changes detected in src/data/contributions.json. Committing and pushing..."
+            git add src/data/contributions.json
+            git commit -m "chore(contributions): sync pull requests via GitHub GraphQL [skip ci]"
+            git push origin main
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      # Because git push was made by GITHUB_TOKEN, GitHub blocks deploy.yml from auto-triggering.
+      # Therefore, we deploy directly here if new contributions were committed or if manually triggered.
+      - name: Setup Pages configuration
+        if: steps.commit_step.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch'
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build Astro site
+        if: steps.commit_step.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch'
+        run: pnpm build
+
+      - name: Upload Pages artifact
+        if: steps.commit_step.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        if: steps.commit_step.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch'
+        id: deployment
+        uses: actions/deploy-pages@v4
