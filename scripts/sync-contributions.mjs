@@ -5,17 +5,18 @@
  *
  * Supported features:
  * - Queries all PRs authored by the configured username on external repositories (-user:<username>).
+ * - Filters by creation date (defaults to >= 2026-10-01 to capture current OSS agentic initiative only).
  * - Extracts every possible PR status: merged, open, draft, closed.
  * - Extracts the primary repository language as the contribution language.
  * - Captures additions, deletions, and changed files diff metrics.
  * - Paginates automatically up to all available PRs.
- * - Merges and updates src/data/contributions.json idempotently.
+ * - Merges and updates src/data/contributions.json idempotently with case-insensitive deduplication.
  *
  * Usage:
  *   node scripts/sync-contributions.mjs
+ *   node scripts/sync-contributions.mjs --since 2026-10-01
  *   node scripts/sync-contributions.mjs --username peremunoz
  *   node scripts/sync-contributions.mjs --dry-run
- *   node scripts/sync-contributions.mjs --mock
  */
 
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -175,102 +176,8 @@ async function executeGraphQL(query, variables, token) {
   return payload.data;
 }
 
-function getMockPRs(username) {
-  return [
-    {
-      number: 1926,
-      title: 'fix(group-chat): pass full-access permissionMode for writable participant spawns',
-      url: 'https://github.com/RunMaestro/Maestro/pull/1926',
-      state: 'MERGED',
-      isDraft: false,
-      createdAt: '2026-10-27T10:00:00Z',
-      mergedAt: '2026-10-28T14:22:10Z',
-      closedAt: '2026-10-28T14:22:10Z',
-      updatedAt: '2026-10-28T14:22:10Z',
-      additions: 66,
-      deletions: 1,
-      changedFiles: 2,
-      repository: {
-        nameWithOwner: 'RunMaestro/Maestro',
-        url: 'https://github.com/RunMaestro/Maestro',
-        isPrivate: false,
-        isFork: false,
-        primaryLanguage: { name: 'TypeScript' }
-      }
-    },
-    {
-      number: 1042,
-      title: 'feat(stream): add backpressure buffer management for websocket ingestion',
-      url: 'https://github.com/open-telemetry/opentelemetry-node/pull/1042',
-      state: 'OPEN',
-      isDraft: false,
-      createdAt: '2026-10-29T16:00:00Z',
-      mergedAt: null,
-      closedAt: null,
-      updatedAt: '2026-10-29T18:00:00Z',
-      additions: 112,
-      deletions: 14,
-      changedFiles: 3,
-      repository: {
-        nameWithOwner: 'open-telemetry/opentelemetry-node',
-        url: 'https://github.com/open-telemetry/opentelemetry-node',
-        isPrivate: false,
-        isFork: false,
-        primaryLanguage: { name: 'TypeScript' }
-      }
-    },
-    {
-      number: 588,
-      title: 'refactor(compiler): experimental bytecode cache optimization',
-      url: 'https://github.com/swc-project/swc/pull/588',
-      state: 'OPEN',
-      isDraft: true,
-      createdAt: '2026-10-30T09:00:00Z',
-      mergedAt: null,
-      closedAt: null,
-      updatedAt: '2026-10-30T10:30:00Z',
-      additions: 230,
-      deletions: 45,
-      changedFiles: 5,
-      repository: {
-        nameWithOwner: 'swc-project/swc',
-        url: 'https://github.com/swc-project/swc',
-        isPrivate: false,
-        isFork: false,
-        primaryLanguage: { name: 'Rust' }
-      }
-    },
-    {
-      number: 450,
-      title: 'docs(architecture): clarify worker pool concurrency constraints',
-      url: 'https://github.com/fastify/fastify/pull/450',
-      state: 'CLOSED',
-      isDraft: false,
-      createdAt: '2026-10-25T11:00:00Z',
-      mergedAt: null,
-      closedAt: '2026-10-26T08:00:00Z',
-      updatedAt: '2026-10-26T08:00:00Z',
-      additions: 15,
-      deletions: 3,
-      changedFiles: 1,
-      repository: {
-        nameWithOwner: 'fastify/fastify',
-        url: 'https://github.com/fastify/fastify',
-        isPrivate: false,
-        isFork: false,
-        primaryLanguage: { name: 'JavaScript' }
-      }
-    }
-  ];
-}
-
-async function fetchAllPullRequests(username, token, isMock = false) {
-  if (isMock) {
-    console.log(`[INFO] Running in mock mode for username: ${username}`);
-    return getMockPRs(username);
-  }
-
-  const searchQuery = `is:pr author:${username} -user:${username}`;
+async function fetchAllPullRequests(username, sinceDate, token) {
+  const searchQuery = `is:pr author:${username} -user:${username} created:>=${sinceDate}`;
   console.log(`[INFO] Querying GitHub GraphQL Search: "${searchQuery}"`);
 
   let cursor = null;
@@ -313,36 +220,38 @@ function sortContributions(items) {
 async function main() {
   const cliArgs = parseArgs(process.argv.slice(2));
   const username = cliArgs.username || process.env.GITHUB_USERNAME || 'peremunoz';
+  const sinceDate = cliArgs.since || process.env.CONTRIBUTIONS_SINCE || '2026-10-01';
   const isDryRun = Boolean(cliArgs['dry-run']);
-  const isMock = Boolean(cliArgs.mock);
 
   console.log(`====================================================`);
   console.log(`GitHub OSS Contributions GraphQL Sync`);
   console.log(`Target Author: @${username} (external repositories only)`);
-  console.log(`Dry Run: ${isDryRun} | Mock Mode: ${isMock}`);
+  console.log(`Since Date: >= ${sinceDate}`);
+  console.log(`Dry Run: ${isDryRun}`);
   console.log(`====================================================`);
 
-  let token = null;
-  if (!isMock) {
-    token = resolveToken(cliArgs.token);
-    if (!token) {
-      console.error(`[ERROR] No GitHub token found.`);
-      console.error(`Please provide a token via GH_TOKEN, GITHUB_TOKEN, CONTRIBUTIONS_TOKEN, or --token <token>.`);
-      console.error(`In local development, you can also log in via 'gh auth login'.`);
-      process.exit(1);
-    }
+  const token = resolveToken(cliArgs.token);
+  if (!token) {
+    console.error(`[ERROR] No GitHub token found.`);
+    console.error(`Please provide a token via GH_TOKEN, GITHUB_TOKEN, CONTRIBUTIONS_TOKEN, or --token <token>.`);
+    console.error(`In local development, you can also log in via 'gh auth login'.`);
+    process.exit(1);
   }
 
-  // Read existing contributions
+  // Read existing contributions and filter out anything older than sinceDate
   let existingContributions = [];
   try {
-    existingContributions = JSON.parse(readFileSync(DATA_FILE, 'utf-8'));
-    console.log(`[INFO] Loaded ${existingContributions.length} existing contributions from ${DATA_FILE}`);
+    const rawExisting = JSON.parse(readFileSync(DATA_FILE, 'utf-8'));
+    existingContributions = rawExisting.filter((c) => {
+      const date = c.createdAt || c.mergedAt || c.closedAt || c.updatedAt;
+      return date && date >= sinceDate;
+    });
+    console.log(`[INFO] Loaded ${existingContributions.length} active contributions (>= ${sinceDate}) from ${DATA_FILE}`);
   } catch (err) {
     console.warn(`[WARN] Could not read existing data file (${err.message}). Starting fresh.`);
   }
 
-  const rawPRs = await fetchAllPullRequests(username, token, isMock);
+  const rawPRs = await fetchAllPullRequests(username, sinceDate, token);
 
   // Transform and filter
   const fetchedContributions = [];
@@ -356,6 +265,11 @@ async function main() {
     if (raw.repository?.isPrivate) {
       continue;
     }
+    // Double-check creation date >= sinceDate
+    const createdDate = raw.createdAt ? String(raw.createdAt).split('T')[0] : null;
+    if (createdDate && createdDate < sinceDate) {
+      continue;
+    }
 
     const transformed = transformPullRequest(raw);
     if (transformed) {
@@ -363,12 +277,16 @@ async function main() {
     }
   }
 
-  console.log(`[INFO] Transformed ${fetchedContributions.length} external pull requests.`);
+  console.log(`[INFO] Transformed ${fetchedContributions.length} external pull requests created since ${sinceDate}.`);
 
-  // Merge map: existing entries keyed by id
+  // Merge map: normalize keys by lowercase repo + prNumber to avoid case-sensitivity duplicates
+  const getDedupKey = (item) => `${(item.repo || '').toLowerCase()}#${item.prNumber}`;
   const contributionMap = new Map();
+
   for (const item of existingContributions) {
-    if (item.id) contributionMap.set(item.id, item);
+    if (item.repo && item.prNumber) {
+      contributionMap.set(getDedupKey(item), item);
+    }
   }
 
   // Update / insert fetched entries
@@ -376,11 +294,13 @@ async function main() {
   let updatedCount = 0;
 
   for (const fetched of fetchedContributions) {
-    if (contributionMap.has(fetched.id)) {
-      const existing = contributionMap.get(fetched.id);
-      contributionMap.set(fetched.id, {
+    const key = getDedupKey(fetched);
+    if (contributionMap.has(key)) {
+      const existing = contributionMap.get(key);
+      contributionMap.set(key, {
         ...existing,
         ...fetched,
+        id: fetched.id, // Ensure canonical lowercase id
         stats: {
           ...existing.stats,
           ...fetched.stats
@@ -388,7 +308,7 @@ async function main() {
       });
       updatedCount++;
     } else {
-      contributionMap.set(fetched.id, fetched);
+      contributionMap.set(key, fetched);
       addedCount++;
     }
   }
@@ -419,4 +339,3 @@ main().catch((err) => {
   console.error(`[FATAL] Sync failed:`, err);
   process.exit(1);
 });
-
