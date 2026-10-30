@@ -1,5 +1,119 @@
 [
   {
+    "id": "meshery-meshery-22652",
+    "repo": "meshery/meshery",
+    "repoUrl": "https://github.com/meshery/meshery",
+    "prNumber": 22652,
+    "prTitle": "[Docs] Clarify Docker startup delay and local site URL",
+    "prUrl": "https://github.com/meshery/meshery/pull/22652",
+    "status": "open",
+    "createdAt": "2026-10-29",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-10-29",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 2,
+      "deletions": 0,
+      "filesChanged": 1
+    }
+  },
+  {
+    "id": "mattermost-mattermost-39563",
+    "repo": "mattermost/mattermost",
+    "repoUrl": "https://github.com/mattermost/mattermost",
+    "prNumber": 39563,
+    "prTitle": "Fix translations showing the opposite action in several locales",
+    "prUrl": "https://github.com/mattermost/mattermost/pull/39563",
+    "status": "open",
+    "createdAt": "2026-10-29",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-10-29",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 13,
+      "deletions": 13,
+      "filesChanged": 11
+    }
+  },
+  {
+    "id": "podman-desktop-podman-desktop-19944",
+    "repo": "podman-desktop/podman-desktop",
+    "repoUrl": "https://github.com/podman-desktop/podman-desktop",
+    "prNumber": 19944,
+    "prTitle": "fix(main): init Podman container before attaching to avoid start hang",
+    "prUrl": "https://github.com/podman-desktop/podman-desktop/pull/19944",
+    "status": "open",
+    "createdAt": "2026-10-29",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-10-29",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 88,
+      "deletions": 0,
+      "filesChanged": 4
+    }
+  },
+  {
+    "id": "zeusln-zeus-5498",
+    "repo": "ZeusLN/zeus",
+    "repoUrl": "https://github.com/ZeusLN/zeus",
+    "prNumber": 5498,
+    "prTitle": "utils: LocaleUtils: replace placeholders literally",
+    "prUrl": "https://github.com/ZeusLN/zeus/pull/5498",
+    "status": "open",
+    "createdAt": "2026-10-27",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-10-29",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 16,
+      "deletions": 5,
+      "filesChanged": 2
+    }
+  },
+  {
+    "id": "vuejs-eslint-plugin-vue-3214",
+    "repo": "vuejs/eslint-plugin-vue",
+    "repoUrl": "https://github.com/vuejs/eslint-plugin-vue",
+    "prNumber": 3214,
+    "prTitle": "feat(no-boolean-default, require-default-prop): support props with multiple types",
+    "prUrl": "https://github.com/vuejs/eslint-plugin-vue/pull/3214",
+    "status": "open",
+    "createdAt": "2026-10-26",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-10-29",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 387,
+      "deletions": 24,
+      "filesChanged": 6
+    }
+  },
+  {
+    "id": "shoelace-style-webawesome-2947",
+    "repo": "shoelace-style/webawesome",
+    "repoUrl": "https://github.com/shoelace-style/webawesome",
+    "prNumber": 2947,
+    "prTitle": "fix(dropdown-item): respect preventDefault() on clicks for link items",
+    "prUrl": "https://github.com/shoelace-style/webawesome/pull/2947",
+    "status": "open",
+    "createdAt": "2026-10-26",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-10-29",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 83,
+      "deletions": 12,
+      "filesChanged": 4
+    }
+  },
+  {
     "id": "runmaestro-maestro-1926",
     "repo": "RunMaestro/Maestro",
     "repoUrl": "https://github.com/RunMaestro/Maestro",
@@ -17,6 +131,25 @@
     "createdAt": "2026-10-26",
     "updatedAt": "2026-10-28",
     "closedAt": "2026-10-28"
+  },
+  {
+    "id": "domcr-acadsharp-1353",
+    "repo": "DomCR/ACadSharp",
+    "repoUrl": "https://github.com/DomCR/ACadSharp",
+    "prNumber": 1353,
+    "prTitle": "Apply the block base point before scale and rotation in Insert.GetTransform()",
+    "prUrl": "https://github.com/DomCR/ACadSharp/pull/1353",
+    "status": "open",
+    "createdAt": "2026-10-28",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-10-28",
+    "language": "C#",
+    "stats": {
+      "additions": 26,
+      "deletions": 2,
+      "filesChanged": 2
+    }
   },
   {
     "id": "reticlehq-reticle-1953",
@@ -38,7 +171,7 @@
     "closedAt": "2026-10-27"
   },
   {
-    "id": "snapotter-hq-SnapOtter-4057",
+    "id": "snapotter-hq-snapotter-4057",
     "repo": "snapotter-hq/SnapOtter",
     "repoUrl": "https://github.com/snapotter-hq/SnapOtter",
     "prNumber": 4057,
@@ -65,7 +198,7 @@
     "prUrl": "https://github.com/chipfighter/context-attachment-manager/pull/14",
     "status": "merged",
     "mergedAt": "2026-10-26",
-    "language": "Html",
+    "language": "TypeScript",
     "stats": {
       "additions": 178,
       "deletions": 2,
@@ -76,7 +209,7 @@
     "closedAt": "2026-10-26"
   },
   {
-    "id": "Tencent-teamai-cli-1381",
+    "id": "tencent-teamai-cli-1381",
     "repo": "Tencent/teamai-cli",
     "repoUrl": "https://github.com/Tencent/teamai-cli",
     "prNumber": 1381,
