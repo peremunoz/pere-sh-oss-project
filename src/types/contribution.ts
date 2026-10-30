@@ -4,6 +4,8 @@ export interface ContributionStats {
   filesChanged?: number;
 }
 
+export type ContributionStatus = 'merged' | 'open' | 'draft' | 'closed';
+
 export interface Contribution {
   id: string;
   repo: string;
@@ -11,8 +13,11 @@ export interface Contribution {
   prNumber: number;
   prTitle: string;
   prUrl: string;
-  status: 'merged' | 'in_review' | 'closed';
-  mergedAt: string; // ISO format: YYYY-MM-DD
+  status: ContributionStatus;
+  createdAt?: string; // ISO format: YYYY-MM-DD
+  mergedAt?: string | null; // ISO format: YYYY-MM-DD
+  closedAt?: string | null; // ISO format: YYYY-MM-DD
+  updatedAt?: string; // ISO format: YYYY-MM-DD
   language: string;
   stats?: ContributionStats;
 }

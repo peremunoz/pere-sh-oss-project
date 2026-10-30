@@ -4,6 +4,7 @@ import { profileConfig } from '../config';
 
 export const GET: APIRoute = async () => {
   const totalMerged = contributions.filter(c => c.status === 'merged').length;
+  const totalOpen = contributions.filter(c => c.status === 'open' || c.status === 'draft').length;
   const uniqueRepos = new Set(contributions.map(c => c.repo)).size;
   const totalAdditions = contributions.reduce((acc, c) => acc + (c.stats?.additions || 0), 0);
   const totalDeletions = contributions.reduce((acc, c) => acc + (c.stats?.deletions || 0), 0);
@@ -23,6 +24,9 @@ export const GET: APIRoute = async () => {
   lines.push('');
   lines.push('## Live Aggregate Metrics');
   lines.push(`- Merged Pull Requests: ${totalMerged}`);
+  if (totalOpen > 0) {
+    lines.push(`- Active / In-Review Pull Requests: ${totalOpen}`);
+  }
   lines.push(`- Repositories Impacted: ${uniqueRepos}`);
   lines.push(`- Total Lines Added: +${totalAdditions}`);
   lines.push(`- Total Lines Removed: -${totalDeletions}`);
@@ -33,12 +37,13 @@ export const GET: APIRoute = async () => {
   lines.push('1. Issue Discovery (AI Agent): Identifies valid issues, bugs, and missing features across open-source repositories.');
   lines.push('2. Implementation (AI Agent): Inspects codebase, diagnoses root cause, implements minimal robust patch, and runs tests.');
   lines.push('3. Verification (Human Review): Rigorous human-in-the-loop audit by Pere Muñoz verifying correctness, edge cases, and repo conventions.');
-  lines.push('4. Merged to Production (Maintainer Review): Upstream project maintainers review, approve, and merge into production.');
+  lines.push('4. Upstream Review: Upstream project maintainers review, approve, and merge into production.');
   lines.push('');
-  lines.push('## Merged Pull Requests');
+  lines.push('## Pull Requests & Contributions');
   for (const c of contributions) {
     const statsStr = c.stats ? ` (+${c.stats.additions} -${c.stats.deletions}, ${c.stats.filesChanged} files)` : '';
-    lines.push(`- [${c.repo} #${c.prNumber}](${c.prUrl}): ${c.prTitle} (${c.language})${statsStr} - Merged ${c.mergedAt}`);
+    const dateStr = c.mergedAt ? `Merged ${c.mergedAt}` : c.closedAt ? `Closed ${c.closedAt}` : c.createdAt ? `Opened ${c.createdAt}` : '';
+    lines.push(`- [${c.repo} #${c.prNumber}](${c.prUrl}) [${c.status.toUpperCase()}]: ${c.prTitle} (${c.language})${statsStr}${dateStr ? ' - ' + dateStr : ''}`);
   }
   lines.push('');
   lines.push('## Links');

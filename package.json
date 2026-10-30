@@ -10,6 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "add-contribution": "node scripts/add-contribution.mjs",
+    "sync-contributions": "node scripts/sync-contributions.mjs",
     "astro": "astro"
   },
   "dependencies": {

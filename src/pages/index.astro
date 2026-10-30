@@ -10,9 +10,14 @@ import type { Contribution } from '../types/contribution';
 // Load and cast contributions data
 const rawContributions = contributionsData as Contribution[];
 
-// Sort newest first by mergedAt date
+// Sort newest first by most relevant date (mergedAt, closedAt, updatedAt, or createdAt)
+const getContributionTime = (c: Contribution) => {
+  const dateStr = c.mergedAt || c.closedAt || c.updatedAt || c.createdAt;
+  return dateStr ? new Date(dateStr).getTime() : 0;
+};
+
 const contributions = [...rawContributions].sort((a, b) => {
-  return new Date(b.mergedAt).getTime() - new Date(a.mergedAt).getTime();
+  return getContributionTime(b) - getContributionTime(a);
 });
 ---
 

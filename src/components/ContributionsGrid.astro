@@ -9,12 +9,18 @@ interface Props {
 
 const { contributions } = Astro.props;
 
+// Determine available statuses present in the data
+const presentStatuses = Array.from(new Set(contributions.map((c) => c.status || 'open')));
+const allStatusOrder = ['all', 'merged', 'open', 'draft', 'closed'];
+const statusOptions = allStatusOrder.filter((st) => st === 'all' || presentStatuses.includes(st as any));
+
+// Determine available languages
 const allLanguages = Array.from(new Set(contributions.map((c) => c.language))).filter(Boolean);
-const filterOptions = ['all', ...allLanguages];
+const languageOptions = ['all', ...allLanguages];
 ---
 
 <section class="mx-auto max-w-5xl px-4 sm:px-6 py-6 flex-1">
-  <!-- Controls: Search input & Tag filters -->
+  <!-- Controls: Search input & Status/Language filters -->
   <div class="space-y-4 mb-8">
     <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
       <!-- Search input -->
@@ -27,7 +33,7 @@ const filterOptions = ['all', ...allLanguages];
         <input
           type="search"
           id="contribution-search"
-          placeholder="Filter by repo, PR title, or language..."
+          placeholder="Filter by repo, PR title, language, or status..."
           class="w-full rounded-lg border border-zinc-200 bg-white py-2 pl-9 pr-4 text-sm text-zinc-900 placeholder-zinc-400 focus:border-zinc-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-zinc-400 font-mono transition-colors shadow-2xs"
           autocomplete="off"
           spellcheck="false"
@@ -36,27 +42,52 @@ const filterOptions = ['all', ...allLanguages];
 
       <!-- Result count indicator -->
       <div class="text-xs font-mono text-zinc-500">
-        Showing <span id="visible-count" class="text-zinc-900 font-semibold">{contributions.length}</span> of {contributions.length} merged PRs
+        Showing <span id="visible-count" class="text-zinc-900 font-semibold">{contributions.length}</span> of {contributions.length} pull requests
       </div>
     </div>
 
-    <!-- Filter Pills (Languages only) -->
-    <div class="flex flex-wrap gap-2 items-center" id="filter-pills" role="tablist">
-      <span class="text-xs font-mono text-zinc-500 mr-1">Language:</span>
-      {filterOptions.map((opt, idx) => (
-        <button
-          type="button"
-          data-filter={opt.toLowerCase()}
-          class={`filter-btn inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono rounded-md border transition-all ${
-            idx === 0
-              ? 'bg-zinc-900 text-white border-zinc-900 font-medium active-filter shadow-xs'
-              : 'bg-white text-zinc-600 border-zinc-200 hover:text-zinc-900 hover:border-zinc-300 shadow-2xs'
-          }`}
-        >
-          <span>{opt === 'all' ? 'All' : opt}</span>
-          {opt !== 'all' && <LanguageIcon language={opt} />}
-        </button>
-      ))}
+    <!-- Filter Pills: Status & Language -->
+    <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 pt-1">
+      <!-- Status Pills -->
+      <div class="flex flex-wrap gap-1.5 items-center" id="status-pills" role="tablist" aria-label="Filter by Status">
+        <span class="text-xs font-mono text-zinc-500 mr-1">Status:</span>
+        {statusOptions.map((st, idx) => {
+          const count = st === 'all' ? contributions.length : contributions.filter((c) => c.status === st).length;
+          return (
+            <button
+              type="button"
+              data-status-filter={st.toLowerCase()}
+              class={`status-filter-btn inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono rounded-md border transition-all ${
+                idx === 0
+                  ? 'bg-zinc-900 text-white border-zinc-900 font-medium active-status shadow-xs'
+                  : 'bg-white text-zinc-600 border-zinc-200 hover:text-zinc-900 hover:border-zinc-300 shadow-2xs'
+              }`}
+            >
+              <span>{st === 'all' ? 'All' : st.charAt(0).toUpperCase() + st.slice(1)}</span>
+              <span class="text-[10px] opacity-75 font-normal">({count})</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <!-- Language Pills -->
+      <div class="flex flex-wrap gap-1.5 items-center" id="language-pills" role="tablist" aria-label="Filter by Language">
+        <span class="text-xs font-mono text-zinc-500 mr-1">Language:</span>
+        {languageOptions.map((opt, idx) => (
+          <button
+            type="button"
+            data-lang-filter={opt.toLowerCase()}
+            class={`lang-filter-btn inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono rounded-md border transition-all ${
+              idx === 0
+                ? 'bg-zinc-900 text-white border-zinc-900 font-medium active-lang shadow-xs'
+                : 'bg-white text-zinc-600 border-zinc-200 hover:text-zinc-900 hover:border-zinc-300 shadow-2xs'
+            }`}
+          >
+            <span>{opt === 'all' ? 'All' : opt}</span>
+            {opt !== 'all' && <LanguageIcon language={opt} />}
+          </button>
+        ))}
+      </div>
     </div>
   </div>
 
@@ -76,7 +107,7 @@ const filterOptions = ['all', ...allLanguages];
     </div>
     <h3 class="text-base font-semibold text-zinc-800">No matching pull requests</h3>
     <p class="mt-1 text-sm text-zinc-500 max-w-sm mx-auto">
-      No contributions match your current search query or active filter.
+      No contributions match your current search query or active filters.
     </p>
     <button
       type="button"
@@ -92,13 +123,15 @@ const filterOptions = ['all', ...allLanguages];
 <script>
   function setupFilters() {
     const searchInput = document.getElementById('contribution-search') as HTMLInputElement | null;
-    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const statusButtons = document.querySelectorAll<HTMLButtonElement>('.status-filter-btn');
+    const langButtons = document.querySelectorAll<HTMLButtonElement>('.lang-filter-btn');
     const cards = document.querySelectorAll<HTMLElement>('.contribution-card');
     const visibleCountEl = document.getElementById('visible-count');
     const emptyStateEl = document.getElementById('empty-state');
     const resetBtn = document.getElementById('reset-filter-btn');
 
-    let activeFilter = 'all';
+    let activeStatus = 'all';
+    let activeLang = 'all';
     let searchQuery = '';
 
     function filterCards() {
@@ -108,18 +141,24 @@ const filterOptions = ['all', ...allLanguages];
         const repo = card.getAttribute('data-repo') || '';
         const title = card.getAttribute('data-title') || '';
         const lang = card.getAttribute('data-lang') || '';
+        const status = card.getAttribute('data-status') || '';
 
         const matchesSearch =
           !searchQuery ||
           repo.includes(searchQuery) ||
           title.includes(searchQuery) ||
-          lang.includes(searchQuery);
+          lang.includes(searchQuery) ||
+          status.includes(searchQuery);
 
-        const matchesTag =
-          activeFilter === 'all' ||
-          lang === activeFilter;
+        const matchesStatus =
+          activeStatus === 'all' ||
+          status === activeStatus;
 
-        if (matchesSearch && matchesTag) {
+        const matchesLang =
+          activeLang === 'all' ||
+          lang === activeLang;
+
+        if (matchesSearch && matchesStatus && matchesLang) {
           card.classList.remove('hidden');
           count++;
         } else {
@@ -147,18 +186,34 @@ const filterOptions = ['all', ...allLanguages];
       filterCards();
     });
 
-    // Tag buttons listeners
-    filterButtons.forEach((btn) => {
+    // Status buttons listeners
+    statusButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
-        filterButtons.forEach((b) => {
-          b.classList.remove('bg-zinc-900', 'text-white', 'border-zinc-900', 'font-medium', 'active-filter', 'shadow-xs');
+        statusButtons.forEach((b) => {
+          b.classList.remove('bg-zinc-900', 'text-white', 'border-zinc-900', 'font-medium', 'active-status', 'shadow-xs');
           b.classList.add('bg-white', 'text-zinc-600', 'border-zinc-200', 'shadow-2xs');
         });
 
         btn.classList.remove('bg-white', 'text-zinc-600', 'border-zinc-200', 'shadow-2xs');
-        btn.classList.add('bg-zinc-900', 'text-white', 'border-zinc-900', 'font-medium', 'active-filter', 'shadow-xs');
+        btn.classList.add('bg-zinc-900', 'text-white', 'border-zinc-900', 'font-medium', 'active-status', 'shadow-xs');
 
-        activeFilter = btn.getAttribute('data-filter') || 'all';
+        activeStatus = btn.getAttribute('data-status-filter') || 'all';
+        filterCards();
+      });
+    });
+
+    // Language buttons listeners
+    langButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        langButtons.forEach((b) => {
+          b.classList.remove('bg-zinc-900', 'text-white', 'border-zinc-900', 'font-medium', 'active-lang', 'shadow-xs');
+          b.classList.add('bg-white', 'text-zinc-600', 'border-zinc-200', 'shadow-2xs');
+        });
+
+        btn.classList.remove('bg-white', 'text-zinc-600', 'border-zinc-200', 'shadow-2xs');
+        btn.classList.add('bg-zinc-900', 'text-white', 'border-zinc-900', 'font-medium', 'active-lang', 'shadow-xs');
+
+        activeLang = btn.getAttribute('data-lang-filter') || 'all';
         filterCards();
       });
     });
@@ -167,15 +222,31 @@ const filterOptions = ['all', ...allLanguages];
     resetBtn?.addEventListener('click', () => {
       if (searchInput) searchInput.value = '';
       searchQuery = '';
-      activeFilter = 'all';
+      activeStatus = 'all';
+      activeLang = 'all';
 
-      filterButtons.forEach((b) => {
-        const isAll = b.getAttribute('data-filter') === 'all';
+      statusButtons.forEach((b) => {
+        const isAll = b.getAttribute('data-status-filter') === 'all';
         b.classList.toggle('bg-zinc-900', isAll);
         b.classList.toggle('text-white', isAll);
         b.classList.toggle('border-zinc-900', isAll);
         b.classList.toggle('font-medium', isAll);
-        b.classList.toggle('active-filter', isAll);
+        b.classList.toggle('active-status', isAll);
+        b.classList.toggle('shadow-xs', isAll);
+
+        b.classList.toggle('bg-white', !isAll);
+        b.classList.toggle('text-zinc-600', !isAll);
+        b.classList.toggle('border-zinc-200', !isAll);
+        b.classList.toggle('shadow-2xs', !isAll);
+      });
+
+      langButtons.forEach((b) => {
+        const isAll = b.getAttribute('data-lang-filter') === 'all';
+        b.classList.toggle('bg-zinc-900', isAll);
+        b.classList.toggle('text-white', isAll);
+        b.classList.toggle('border-zinc-900', isAll);
+        b.classList.toggle('font-medium', isAll);
+        b.classList.toggle('active-lang', isAll);
         b.classList.toggle('shadow-xs', isAll);
 
         b.classList.toggle('bg-white', !isAll);
@@ -190,6 +261,6 @@ const filterOptions = ['all', ...allLanguages];
 
   // Run on page load
   setupFilters();
-  // Support Astro View Transitions if ever enabled
+  // Support Astro View Transitions if enabled
   document.addEventListener('astro:page-load', setupFilters);
 </script>

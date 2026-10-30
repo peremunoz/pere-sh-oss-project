@@ -4,6 +4,7 @@ import { profileConfig } from '../config';
 
 export const GET: APIRoute = async () => {
   const totalMerged = contributions.filter(c => c.status === 'merged').length;
+  const totalOpen = contributions.filter(c => c.status === 'open' || c.status === 'draft').length;
   const uniqueRepos = new Set(contributions.map(c => c.repo)).size;
   const totalAdditions = contributions.reduce((acc, c) => acc + (c.stats?.additions || 0), 0);
   const totalDeletions = contributions.reduce((acc, c) => acc + (c.stats?.deletions || 0), 0);
@@ -28,6 +29,9 @@ export const GET: APIRoute = async () => {
   lines.push('');
   lines.push('## Aggregate Statistics');
   lines.push(`- Total Pull Requests Merged: ${totalMerged}`);
+  if (totalOpen > 0) {
+    lines.push(`- Total Pull Requests In-Review / Active: ${totalOpen}`);
+  }
   lines.push(`- Open Source Repositories Impacted: ${uniqueRepos}`);
   lines.push(`- Total Lines of Code Added: +${totalAdditions}`);
   lines.push(`- Total Lines of Code Deleted: -${totalDeletions}`);
@@ -49,10 +53,10 @@ export const GET: APIRoute = async () => {
   lines.push('- Personally reviewed and audited by Pere Muñoz.');
   lines.push('- Sanity-checks edge cases, performance implications, architectural fit, and security.');
   lines.push('');
-  lines.push('### Stage 4: Merged to Production (Project Maintainers)');
+  lines.push('### Stage 4: Maintainer Review & Deployment');
   lines.push('- Submitted upstream via pull requests.');
   lines.push('- Passes repository continuous integration (CI) test suites.');
-  lines.push('- Reviewed, approved, and merged by open-source project maintainers.');
+  lines.push('- Reviewed, approved, and merged into production by project maintainers.');
   lines.push('');
   lines.push('## Detailed Contribution Inventory');
   lines.push('');
@@ -63,7 +67,13 @@ export const GET: APIRoute = async () => {
     lines.push(`- **Repository**: [${c.repo}](${c.repoUrl})`);
     lines.push(`- **Pull Request**: [PR #${c.prNumber}](${c.prUrl})`);
     lines.push(`- **Status**: ${c.status.toUpperCase()}`);
-    lines.push(`- **Merged Date**: ${c.mergedAt}`);
+    if (c.mergedAt) {
+      lines.push(`- **Merged Date**: ${c.mergedAt}`);
+    } else if (c.closedAt) {
+      lines.push(`- **Closed Date**: ${c.closedAt}`);
+    } else if (c.createdAt) {
+      lines.push(`- **Opened Date**: ${c.createdAt}`);
+    }
     lines.push(`- **Language / Ecosystem**: ${c.language}`);
     if (c.stats) {
       lines.push(`- **Diff Impact**: +${c.stats.additions} additions, -${c.stats.deletions} deletions across ${c.stats.filesChanged} file(s)`);

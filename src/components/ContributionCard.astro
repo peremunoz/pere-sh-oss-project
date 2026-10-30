@@ -8,13 +8,53 @@ interface Props {
 
 const { contribution } = Astro.props;
 
-// Format merged date nicely (e.g., "Oct 26, 2026")
-const formattedDate = new Date(contribution.mergedAt).toLocaleDateString('en-US', {
-  month: 'short',
-  day: 'numeric',
-  year: 'numeric',
-  timeZone: 'UTC',
-});
+// Configuration for badges and labels per PR status
+const statusConfig = {
+  merged: {
+    label: 'Merged',
+    badgeClass: 'bg-purple-50 text-purple-700 border-purple-200 shadow-2xs',
+    textMutedClass: 'text-purple-600/80',
+    dateLabel: 'Merged',
+  },
+  open: {
+    label: 'Open',
+    badgeClass: 'bg-emerald-50 text-emerald-700 border-emerald-200 shadow-2xs',
+    textMutedClass: 'text-emerald-600/80',
+    dateLabel: 'Opened',
+  },
+  draft: {
+    label: 'Draft',
+    badgeClass: 'bg-zinc-100 text-zinc-600 border-zinc-200 shadow-2xs',
+    textMutedClass: 'text-zinc-500',
+    dateLabel: 'Drafted',
+  },
+  closed: {
+    label: 'Closed',
+    badgeClass: 'bg-rose-50 text-rose-700 border-rose-200 shadow-2xs',
+    textMutedClass: 'text-rose-600/80',
+    dateLabel: 'Closed',
+  },
+};
+
+const currentStatus = (contribution.status || 'open') as keyof typeof statusConfig;
+const statusInfo = statusConfig[currentStatus] || statusConfig.open;
+
+// Choose relevant date depending on status
+const relevantDateStr =
+  (contribution.status === 'merged' ? contribution.mergedAt : null) ||
+  (contribution.status === 'closed' ? contribution.closedAt : null) ||
+  contribution.createdAt ||
+  contribution.updatedAt ||
+  contribution.mergedAt;
+
+const formattedDate = relevantDateStr
+  ? new Date(relevantDateStr).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC',
+    })
+  : 'Recent';
 ---
 
 <article
@@ -22,8 +62,9 @@ const formattedDate = new Date(contribution.mergedAt).toLocaleDateString('en-US'
   data-repo={contribution.repo.toLowerCase()}
   data-title={contribution.prTitle.toLowerCase()}
   data-lang={contribution.language.toLowerCase()}
+  data-status={contribution.status.toLowerCase()}
 >
-  <!-- Card Header: Repo info + Merged status badge -->
+  <!-- Card Header: Repo info + Status badge -->
   <div>
     <div class="flex items-center justify-between gap-3 text-xs font-mono">
       <a
@@ -33,7 +74,7 @@ const formattedDate = new Date(contribution.mergedAt).toLocaleDateString('en-US'
         class="inline-flex items-center gap-1.5 text-zinc-600 hover:text-zinc-900 transition-colors truncate"
         title={`View repository ${contribution.repo}`}
       >
-        <!-- Crisp Repository / Codebase Icon -->
+        <!-- Repository Icon -->
         <svg class="h-3.5 w-3.5 shrink-0 text-zinc-400 group-hover:text-zinc-600 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
           <path d="M6 6h10"></path>
@@ -42,15 +83,40 @@ const formattedDate = new Date(contribution.mergedAt).toLocaleDateString('en-US'
         <span class="truncate font-medium">{contribution.repo}</span>
       </a>
 
-      <!-- GitHub-style Merged Badge with Crisp Git Merge Icon -->
-      <span class="inline-flex items-center gap-1.5 shrink-0 rounded-full bg-purple-50 px-2.5 py-0.5 text-[11px] font-medium text-purple-700 border border-purple-200 shadow-2xs">
-        <svg class="h-3.5 w-3.5 shrink-0 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="18" cy="18" r="3"></circle>
-          <circle cx="6" cy="6" r="3"></circle>
-          <path d="M6 21V9a9 9 0 0 0 9 9"></path>
-        </svg>
-        <span>Merged</span>
-        <span class="text-purple-600/80 font-mono">#{contribution.prNumber}</span>
+      <!-- Dynamic GitHub-style Status Badge -->
+      <span class={`inline-flex items-center gap-1.5 shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-medium border ${statusInfo.badgeClass}`}>
+        {currentStatus === 'merged' && (
+          <svg class="h-3.5 w-3.5 shrink-0 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="18" cy="18" r="3"></circle>
+            <circle cx="6" cy="6" r="3"></circle>
+            <path d="M6 21V9a9 9 0 0 0 9 9"></path>
+          </svg>
+        )}
+        {currentStatus === 'open' && (
+          <svg class="h-3.5 w-3.5 shrink-0 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="18" cy="18" r="3"></circle>
+            <circle cx="6" cy="6" r="3"></circle>
+            <path d="M18 6V15"></path>
+            <path d="M6 9v12"></path>
+          </svg>
+        )}
+        {currentStatus === 'draft' && (
+          <svg class="h-3.5 w-3.5 shrink-0 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 2" aria-hidden="true">
+            <circle cx="18" cy="18" r="3" stroke-dasharray="none"></circle>
+            <circle cx="6" cy="6" r="3" stroke-dasharray="none"></circle>
+            <path d="M6 9v12"></path>
+            <path d="M18 6v9"></path>
+          </svg>
+        )}
+        {currentStatus === 'closed' && (
+          <svg class="h-3.5 w-3.5 shrink-0 text-rose-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+          </svg>
+        )}
+        <span>{statusInfo.label}</span>
+        <span class={`${statusInfo.textMutedClass} font-mono`}>#{contribution.prNumber}</span>
       </span>
     </div>
 
@@ -84,8 +150,9 @@ const formattedDate = new Date(contribution.mergedAt).toLocaleDateString('en-US'
 
     <!-- Date & Diff Stats -->
     <div class="flex items-center justify-between text-xs font-mono text-zinc-500 pt-0.5">
-      <time datetime={contribution.mergedAt} class="text-zinc-600">
-        {formattedDate}
+      <time datetime={relevantDateStr || ''} class="text-zinc-600 flex items-center gap-1">
+        <span class="text-zinc-400 font-normal">{statusInfo.dateLabel}</span>
+        <span>{formattedDate}</span>
       </time>
 
       {contribution.stats && (

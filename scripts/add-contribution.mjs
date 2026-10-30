@@ -54,8 +54,18 @@ function normalizeContribution(raw) {
   const repoUrl = raw.repoUrl || (raw.repo.startsWith('http') ? raw.repo : `https://github.com/${raw.repo.replace(/^https?:\/\/github\.com\//, '')}`);
   const language = raw.language || raw.lang || 'Code';
 
-  // Clean mergedAt date
-  let mergedAt = raw.mergedAt ? String(raw.mergedAt).split('T')[0] : new Date().toISOString().split('T')[0];
+  const status = raw.status || 'merged';
+  const toDate = (val) => (val ? String(val).split('T')[0] : undefined);
+
+  // If status is merged and no mergedAt provided, default to today
+  let mergedAt = toDate(raw.mergedAt);
+  if (status === 'merged' && !mergedAt) {
+    mergedAt = new Date().toISOString().split('T')[0];
+  }
+
+  const createdAt = toDate(raw.createdAt);
+  const closedAt = toDate(raw.closedAt);
+  const updatedAt = toDate(raw.updatedAt);
 
   return {
     id,
@@ -64,8 +74,11 @@ function normalizeContribution(raw) {
     prNumber: Number(prNumber),
     prTitle: String(prTitle).trim(),
     prUrl: String(prUrl).trim(),
-    status: raw.status || 'merged',
-    mergedAt,
+    status,
+    ...(createdAt ? { createdAt } : {}),
+    ...(mergedAt ? { mergedAt } : {}),
+    ...(closedAt ? { closedAt } : {}),
+    ...(updatedAt ? { updatedAt } : {}),
     language,
     stats: {
       additions: Number(raw.additions || raw.stats?.additions || 0),
