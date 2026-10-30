@@ -16,6 +16,7 @@ import {
   faCss3Alt,
   type IconDefinition,
 } from '@fortawesome/free-brands-svg-icons';
+import csharpLogo from '../assets/logos/csharp.svg';
 
 interface Props {
   language: string;
@@ -23,6 +24,8 @@ interface Props {
 
 const { language } = Astro.props;
 const lang = language.toLowerCase().trim();
+
+const isCSharp = lang === 'c#' || lang === 'csharp' || lang === 'cs';
 
 // Map programming language to FontAwesome Brand SVG Icon
 let faIcon: IconDefinition | null = null;
@@ -58,7 +61,17 @@ if (lang === 'typescript' || lang === 'ts') {
 }
 ---
 
-{faIcon ? (
+{isCSharp ? (
+  <img
+    src={csharpLogo.src}
+    alt="C#"
+    class="h-3 w-3 shrink-0 object-contain inline-block"
+    width="12"
+    height="12"
+    loading="lazy"
+    aria-hidden="true"
+  />
+) : faIcon ? (
   <svg
     class="h-3 w-3 shrink-0"
     viewBox={`0 0 ${faIcon.icon[0]} ${faIcon.icon[1]}`}
