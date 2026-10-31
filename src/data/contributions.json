@@ -10,12 +10,50 @@
     "createdAt": "2026-10-29",
     "mergedAt": null,
     "closedAt": null,
-    "updatedAt": "2026-10-29",
+    "updatedAt": "2026-10-30",
     "language": "TypeScript",
     "stats": {
       "additions": 2,
       "deletions": 0,
       "filesChanged": 1
+    }
+  },
+  {
+    "id": "podman-desktop-podman-desktop-19944",
+    "repo": "podman-desktop/podman-desktop",
+    "repoUrl": "https://github.com/podman-desktop/podman-desktop",
+    "prNumber": 19944,
+    "prTitle": "fix(main): send upgrade headers and zero Content-Length for podmanAttach",
+    "prUrl": "https://github.com/podman-desktop/podman-desktop/pull/19944",
+    "status": "open",
+    "createdAt": "2026-10-29",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-10-30",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 98,
+      "deletions": 29,
+      "filesChanged": 3
+    }
+  },
+  {
+    "id": "zeusln-zeus-5498",
+    "repo": "ZeusLN/zeus",
+    "repoUrl": "https://github.com/ZeusLN/zeus",
+    "prNumber": 5498,
+    "prTitle": "utils: LocaleUtils: replace placeholders literally",
+    "prUrl": "https://github.com/ZeusLN/zeus/pull/5498",
+    "status": "merged",
+    "createdAt": "2026-10-27",
+    "mergedAt": "2026-10-30",
+    "closedAt": "2026-10-30",
+    "updatedAt": "2026-10-30",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 16,
+      "deletions": 5,
+      "filesChanged": 2
     }
   },
   {
@@ -35,44 +73,6 @@
       "additions": 13,
       "deletions": 13,
       "filesChanged": 11
-    }
-  },
-  {
-    "id": "podman-desktop-podman-desktop-19944",
-    "repo": "podman-desktop/podman-desktop",
-    "repoUrl": "https://github.com/podman-desktop/podman-desktop",
-    "prNumber": 19944,
-    "prTitle": "fix(main): init Podman container before attaching to avoid start hang",
-    "prUrl": "https://github.com/podman-desktop/podman-desktop/pull/19944",
-    "status": "open",
-    "createdAt": "2026-10-29",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-10-29",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 88,
-      "deletions": 0,
-      "filesChanged": 4
-    }
-  },
-  {
-    "id": "zeusln-zeus-5498",
-    "repo": "ZeusLN/zeus",
-    "repoUrl": "https://github.com/ZeusLN/zeus",
-    "prNumber": 5498,
-    "prTitle": "utils: LocaleUtils: replace placeholders literally",
-    "prUrl": "https://github.com/ZeusLN/zeus/pull/5498",
-    "status": "open",
-    "createdAt": "2026-10-27",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-10-29",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 16,
-      "deletions": 5,
-      "filesChanged": 2
     }
   },
   {
