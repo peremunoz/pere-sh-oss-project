@@ -209,6 +209,25 @@
     "closedAt": "2026-10-26"
   },
   {
+    "id": "chipfighter-framekeeper-14",
+    "repo": "chipfighter/framekeeper",
+    "repoUrl": "https://github.com/chipfighter/framekeeper",
+    "prNumber": 14,
+    "prTitle": "fix(panel): keep keyboard focus inside the image preview dialog",
+    "prUrl": "https://github.com/chipfighter/framekeeper/pull/14",
+    "status": "merged",
+    "createdAt": "2026-10-26",
+    "mergedAt": "2026-10-26",
+    "closedAt": "2026-10-26",
+    "updatedAt": "2026-10-26",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 178,
+      "deletions": 2,
+      "filesChanged": 2
+    }
+  },
+  {
     "id": "tencent-teamai-cli-1381",
     "repo": "Tencent/teamai-cli",
     "repoUrl": "https://github.com/Tencent/teamai-cli",
