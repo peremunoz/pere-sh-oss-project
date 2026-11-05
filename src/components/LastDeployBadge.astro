@@ -109,5 +109,7 @@ const initialRelativeTime = 'just now';
 
   updateDeployRelativeTime();
   document.addEventListener('astro:page-load', updateDeployRelativeTime);
+  // Periodically refresh relative time every 60 seconds
+  setInterval(updateDeployRelativeTime, 60000);
 </script>
 
