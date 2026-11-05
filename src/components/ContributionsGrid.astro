@@ -3,6 +3,7 @@ import type { Contribution } from '../types/contribution';
 import ContributionCard from './ContributionCard.astro';
 import FilterToolbar from './FilterToolbar.astro';
 import EmptyState from './EmptyState.astro';
+import LastDeployBadge from './LastDeployBadge.astro';
 
 interface Props {
   contributions: Contribution[];
@@ -27,6 +28,14 @@ const languageOptions = ['all', ...allLanguages];
     statusOptions={statusOptions}
     languageOptions={languageOptions}
   />
+
+  <!-- Top of Contributions Cards: Count & Relative Deploy Timestamp with UTC Popover -->
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-zinc-500 mb-3.5 px-0.5">
+    <div>
+      Showing <span id="visible-count" class="text-zinc-900 font-semibold">{contributions.length}</span> of {contributions.length} pull requests
+    </div>
+    <LastDeployBadge />
+  </div>
 
   <!-- Cards Grid -->
   <div id="contributions-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
