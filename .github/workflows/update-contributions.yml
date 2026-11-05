@@ -14,17 +14,17 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
-  group: 'pages'
+  group: 'sync-contributions'
   cancel-in-progress: false
 
 jobs:
-  sync-and-deploy:
-    name: Sync Contributions & Deploy
+  sync:
+    name: Sync Contributions
     runs-on: ubuntu-latest
+    outputs:
+      has_changes: ${{ steps.commit_step.outputs.has_changes }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -74,24 +74,8 @@ jobs:
             echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
 
-      # Because git push was made by GITHUB_TOKEN, GitHub blocks deploy.yml from auto-triggering.
-      # Therefore, we deploy directly here if new contributions were committed or if manually triggered.
-      - name: Setup Pages configuration
-        if: steps.commit_step.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch'
-        id: pages
-        uses: actions/configure-pages@v5
-
-      - name: Build Astro site
-        if: steps.commit_step.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch'
-        run: pnpm build
-
-      - name: Upload Pages artifact
-        if: steps.commit_step.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-      - name: Deploy to GitHub Pages
-        if: steps.commit_step.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch'
-        id: deployment
-        uses: actions/deploy-pages@v4
+  deploy:
+    name: Deploy to Production
+    needs: sync
+    if: needs.sync.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch'
+    uses: ./.github/workflows/deploy.yml
