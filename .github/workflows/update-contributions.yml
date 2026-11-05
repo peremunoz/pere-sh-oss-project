@@ -2,8 +2,8 @@ name: Sync Contributions via GitHub GraphQL
 
 on:
   schedule:
-    # Run automatically every day at 04:00 UTC
-    - cron: '0 4 * * *'
+    # Run automatically twice a day at 01:00 UTC and 13:00 UTC (1 AM & 1 PM UTC)
+    - cron: '0 1,13 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
