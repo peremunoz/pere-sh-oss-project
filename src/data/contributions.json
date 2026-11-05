@@ -1,5 +1,81 @@
 [
   {
+    "id": "podman-desktop-podman-desktop-19944",
+    "repo": "podman-desktop/podman-desktop",
+    "repoUrl": "https://github.com/podman-desktop/podman-desktop",
+    "prNumber": 19944,
+    "prTitle": "fix(main): send upgrade headers and zero Content-Length for podmanAttach",
+    "prUrl": "https://github.com/podman-desktop/podman-desktop/pull/19944",
+    "status": "open",
+    "createdAt": "2026-10-29",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-05",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 104,
+      "deletions": 29,
+      "filesChanged": 3
+    }
+  },
+  {
+    "id": "finsys-dockhand-1865",
+    "repo": "Finsys/dockhand",
+    "repoUrl": "https://github.com/Finsys/dockhand",
+    "prNumber": 1865,
+    "prTitle": "fix(activity): log container update events when recreating containers (#1864)",
+    "prUrl": "https://github.com/Finsys/dockhand/pull/1865",
+    "status": "draft",
+    "createdAt": "2026-11-05",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-05",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 60,
+      "deletions": 2,
+      "filesChanged": 4
+    }
+  },
+  {
+    "id": "thu-maic-openmaic-2180",
+    "repo": "THU-MAIC/OpenMAIC",
+    "repoUrl": "https://github.com/THU-MAIC/OpenMAIC",
+    "prNumber": 2180,
+    "prTitle": "fix(server): explain reserved and fake-ip SSRF refusals without suggesting ALLOW_LOCAL_NETWORKS",
+    "prUrl": "https://github.com/THU-MAIC/OpenMAIC/pull/2180",
+    "status": "open",
+    "createdAt": "2026-11-05",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-05",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 72,
+      "deletions": 28,
+      "filesChanged": 2
+    }
+  },
+  {
+    "id": "renovatebot-renovate-47783",
+    "repo": "renovatebot/renovate",
+    "repoUrl": "https://github.com/renovatebot/renovate",
+    "prNumber": 47783,
+    "prTitle": "ci: ignore stale merge queue removal events when labeling dequeued PRs",
+    "prUrl": "https://github.com/renovatebot/renovate/pull/47783",
+    "status": "open",
+    "createdAt": "2026-11-05",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-05",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 11,
+      "deletions": 2,
+      "filesChanged": 1
+    }
+  },
+  {
     "id": "meshery-meshery-22652",
     "repo": "meshery/meshery",
     "repoUrl": "https://github.com/meshery/meshery",
@@ -16,25 +92,6 @@
       "additions": 2,
       "deletions": 0,
       "filesChanged": 1
-    }
-  },
-  {
-    "id": "podman-desktop-podman-desktop-19944",
-    "repo": "podman-desktop/podman-desktop",
-    "repoUrl": "https://github.com/podman-desktop/podman-desktop",
-    "prNumber": 19944,
-    "prTitle": "fix(main): send upgrade headers and zero Content-Length for podmanAttach",
-    "prUrl": "https://github.com/podman-desktop/podman-desktop/pull/19944",
-    "status": "open",
-    "createdAt": "2026-10-29",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-10-30",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 98,
-      "deletions": 29,
-      "filesChanged": 3
     }
   },
   {
