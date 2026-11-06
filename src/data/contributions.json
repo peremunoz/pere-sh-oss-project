@@ -29,12 +29,50 @@
     "createdAt": "2026-10-29",
     "mergedAt": null,
     "closedAt": null,
-    "updatedAt": "2026-11-05",
+    "updatedAt": "2026-11-06",
     "language": "TypeScript",
     "stats": {
       "additions": 104,
       "deletions": 29,
       "filesChanged": 3
+    }
+  },
+  {
+    "id": "streetsidesoftware-cspell-9543",
+    "repo": "streetsidesoftware/cspell",
+    "repoUrl": "https://github.com/streetsidesoftware/cspell",
+    "prNumber": 9543,
+    "prTitle": "fix: Avoid running out of memory on words with many repMap matches",
+    "prUrl": "https://github.com/streetsidesoftware/cspell/pull/9543",
+    "status": "merged",
+    "createdAt": "2026-11-05",
+    "mergedAt": "2026-11-06",
+    "closedAt": "2026-11-06",
+    "updatedAt": "2026-11-06",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 29,
+      "deletions": 4,
+      "filesChanged": 3
+    }
+  },
+  {
+    "id": "zeusln-zeus-5626",
+    "repo": "ZeusLN/zeus",
+    "repoUrl": "https://github.com/ZeusLN/zeus",
+    "prNumber": 5626,
+    "prTitle": "utils: LocaleUtils: single-pass regex substitution",
+    "prUrl": "https://github.com/ZeusLN/zeus/pull/5626",
+    "status": "merged",
+    "createdAt": "2026-11-06",
+    "mergedAt": "2026-11-06",
+    "closedAt": "2026-11-06",
+    "updatedAt": "2026-11-06",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 42,
+      "deletions": 5,
+      "filesChanged": 2
     }
   },
   {
@@ -92,25 +130,6 @@
       "additions": 83,
       "deletions": 12,
       "filesChanged": 4
-    }
-  },
-  {
-    "id": "streetsidesoftware-cspell-9543",
-    "repo": "streetsidesoftware/cspell",
-    "repoUrl": "https://github.com/streetsidesoftware/cspell",
-    "prNumber": 9543,
-    "prTitle": "fix: Avoid running out of memory on words with many repMap matches",
-    "prUrl": "https://github.com/streetsidesoftware/cspell/pull/9543",
-    "status": "open",
-    "createdAt": "2026-11-05",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-05",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 29,
-      "deletions": 4,
-      "filesChanged": 3
     }
   },
   {
