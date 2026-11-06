@@ -1,5 +1,24 @@
 [
   {
+    "id": "renovatebot-renovate-47783",
+    "repo": "renovatebot/renovate",
+    "repoUrl": "https://github.com/renovatebot/renovate",
+    "prNumber": 47783,
+    "prTitle": "ci: ignore stale merge queue removal events when labeling dequeued PRs",
+    "prUrl": "https://github.com/renovatebot/renovate/pull/47783",
+    "status": "open",
+    "createdAt": "2026-11-05",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-06",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 11,
+      "deletions": 2,
+      "filesChanged": 1
+    }
+  },
+  {
     "id": "podman-desktop-podman-desktop-19944",
     "repo": "podman-desktop/podman-desktop",
     "repoUrl": "https://github.com/podman-desktop/podman-desktop",
@@ -25,7 +44,7 @@
     "prNumber": 1865,
     "prTitle": "fix(activity): log container update events when recreating containers (#1864)",
     "prUrl": "https://github.com/Finsys/dockhand/pull/1865",
-    "status": "draft",
+    "status": "open",
     "createdAt": "2026-11-05",
     "mergedAt": null,
     "closedAt": null,
@@ -57,12 +76,31 @@
     }
   },
   {
-    "id": "renovatebot-renovate-47783",
-    "repo": "renovatebot/renovate",
-    "repoUrl": "https://github.com/renovatebot/renovate",
-    "prNumber": 47783,
-    "prTitle": "ci: ignore stale merge queue removal events when labeling dequeued PRs",
-    "prUrl": "https://github.com/renovatebot/renovate/pull/47783",
+    "id": "shoelace-style-webawesome-2947",
+    "repo": "shoelace-style/webawesome",
+    "repoUrl": "https://github.com/shoelace-style/webawesome",
+    "prNumber": 2947,
+    "prTitle": "fix(dropdown-item): respect preventDefault() on clicks for link items",
+    "prUrl": "https://github.com/shoelace-style/webawesome/pull/2947",
+    "status": "open",
+    "createdAt": "2026-10-26",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-05",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 83,
+      "deletions": 12,
+      "filesChanged": 4
+    }
+  },
+  {
+    "id": "streetsidesoftware-cspell-9543",
+    "repo": "streetsidesoftware/cspell",
+    "repoUrl": "https://github.com/streetsidesoftware/cspell",
+    "prNumber": 9543,
+    "prTitle": "fix: Avoid running out of memory on words with many repMap matches",
+    "prUrl": "https://github.com/streetsidesoftware/cspell/pull/9543",
     "status": "open",
     "createdAt": "2026-11-05",
     "mergedAt": null,
@@ -70,9 +108,9 @@
     "updatedAt": "2026-11-05",
     "language": "TypeScript",
     "stats": {
-      "additions": 11,
-      "deletions": 2,
-      "filesChanged": 1
+      "additions": 29,
+      "deletions": 4,
+      "filesChanged": 3
     }
   },
   {
@@ -149,25 +187,6 @@
       "additions": 387,
       "deletions": 24,
       "filesChanged": 6
-    }
-  },
-  {
-    "id": "shoelace-style-webawesome-2947",
-    "repo": "shoelace-style/webawesome",
-    "repoUrl": "https://github.com/shoelace-style/webawesome",
-    "prNumber": 2947,
-    "prTitle": "fix(dropdown-item): respect preventDefault() on clicks for link items",
-    "prUrl": "https://github.com/shoelace-style/webawesome/pull/2947",
-    "status": "open",
-    "createdAt": "2026-10-26",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-10-29",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 83,
-      "deletions": 12,
-      "filesChanged": 4
     }
   },
   {
