@@ -144,7 +144,7 @@
     "mergedAt": "2026-11-02",
     "closedAt": "2026-11-02",
     "updatedAt": "2026-11-02",
-    "language": "TypeScript",
+    "language": "Go",
     "stats": {
       "additions": 2,
       "deletions": 0,
