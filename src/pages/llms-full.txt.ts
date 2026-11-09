@@ -6,9 +6,10 @@ export const GET: APIRoute = async () => {
   const totalMerged = contributions.filter(c => c.status === 'merged').length;
   const totalOpen = contributions.filter(c => c.status === 'open' || c.status === 'draft').length;
   const uniqueRepos = new Set(contributions.map(c => c.repo)).size;
-  const totalAdditions = contributions.reduce((acc, c) => acc + (c.stats?.additions || 0), 0);
-  const totalDeletions = contributions.reduce((acc, c) => acc + (c.stats?.deletions || 0), 0);
-  const totalFilesChanged = contributions.reduce((acc, c) => acc + (c.stats?.filesChanged || 0), 0);
+  const activeContributions = contributions.filter(c => c.status !== 'closed');
+  const totalAdditions = activeContributions.reduce((acc, c) => acc + (c.stats?.additions || 0), 0);
+  const totalDeletions = activeContributions.reduce((acc, c) => acc + (c.stats?.deletions || 0), 0);
+  const totalFilesChanged = activeContributions.reduce((acc, c) => acc + (c.stats?.filesChanged || 0), 0);
 
   const lines: string[] = [];
 
