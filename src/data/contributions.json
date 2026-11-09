@@ -1,5 +1,43 @@
 [
   {
+    "id": "mattermost-mattermost-39563",
+    "repo": "mattermost/mattermost",
+    "repoUrl": "https://github.com/mattermost/mattermost",
+    "prNumber": 39563,
+    "prTitle": "Fix translations showing the opposite action in several locales",
+    "prUrl": "https://github.com/mattermost/mattermost/pull/39563",
+    "status": "open",
+    "createdAt": "2026-10-29",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-09",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 13,
+      "deletions": 13,
+      "filesChanged": 11
+    }
+  },
+  {
+    "id": "vuejs-eslint-plugin-vue-3214",
+    "repo": "vuejs/eslint-plugin-vue",
+    "repoUrl": "https://github.com/vuejs/eslint-plugin-vue",
+    "prNumber": 3214,
+    "prTitle": "feat(no-boolean-default, require-default-prop): support props with multiple types",
+    "prUrl": "https://github.com/vuejs/eslint-plugin-vue/pull/3214",
+    "status": "open",
+    "createdAt": "2026-10-26",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-09",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 387,
+      "deletions": 24,
+      "filesChanged": 6
+    }
+  },
+  {
     "id": "podman-desktop-podman-desktop-19944",
     "repo": "podman-desktop/podman-desktop",
     "repoUrl": "https://github.com/podman-desktop/podman-desktop",
@@ -187,44 +225,6 @@
       "additions": 16,
       "deletions": 5,
       "filesChanged": 2
-    }
-  },
-  {
-    "id": "mattermost-mattermost-39563",
-    "repo": "mattermost/mattermost",
-    "repoUrl": "https://github.com/mattermost/mattermost",
-    "prNumber": 39563,
-    "prTitle": "Fix translations showing the opposite action in several locales",
-    "prUrl": "https://github.com/mattermost/mattermost/pull/39563",
-    "status": "open",
-    "createdAt": "2026-10-29",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-10-29",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 13,
-      "deletions": 13,
-      "filesChanged": 11
-    }
-  },
-  {
-    "id": "vuejs-eslint-plugin-vue-3214",
-    "repo": "vuejs/eslint-plugin-vue",
-    "repoUrl": "https://github.com/vuejs/eslint-plugin-vue",
-    "prNumber": 3214,
-    "prTitle": "feat(no-boolean-default, require-default-prop): support props with multiple types",
-    "prUrl": "https://github.com/vuejs/eslint-plugin-vue/pull/3214",
-    "status": "open",
-    "createdAt": "2026-10-26",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-10-29",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 387,
-      "deletions": 24,
-      "filesChanged": 6
     }
   },
   {
