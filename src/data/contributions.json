@@ -32,8 +32,8 @@
     "updatedAt": "2026-11-09",
     "language": "TypeScript",
     "stats": {
-      "additions": 387,
-      "deletions": 24,
+      "additions": 470,
+      "deletions": 47,
       "filesChanged": 6
     }
   },
@@ -44,10 +44,10 @@
     "prNumber": 19944,
     "prTitle": "fix(main): send upgrade headers and zero Content-Length for podmanAttach",
     "prUrl": "https://github.com/podman-desktop/podman-desktop/pull/19944",
-    "status": "open",
+    "status": "merged",
     "createdAt": "2026-10-29",
-    "mergedAt": null,
-    "closedAt": null,
+    "mergedAt": "2026-11-09",
+    "closedAt": "2026-11-09",
     "updatedAt": "2026-11-09",
     "language": "TypeScript",
     "stats": {
