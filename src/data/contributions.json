@@ -1,5 +1,24 @@
 [
   {
+    "id": "4gray-iptvnator-2153",
+    "repo": "4gray/iptvnator",
+    "repoUrl": "https://github.com/4gray/iptvnator",
+    "prNumber": 2153,
+    "prTitle": "fix(stalker): refresh series season picker and next episode from saved progress",
+    "prUrl": "https://github.com/4gray/iptvnator/pull/2153",
+    "status": "open",
+    "createdAt": "2026-11-07",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-14",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 864,
+      "deletions": 150,
+      "filesChanged": 20
+    }
+  },
+  {
     "id": "vuejs-eslint-plugin-vue-3214",
     "repo": "vuejs/eslint-plugin-vue",
     "repoUrl": "https://github.com/vuejs/eslint-plugin-vue",
@@ -35,25 +54,6 @@
       "additions": 85,
       "deletions": 12,
       "filesChanged": 4
-    }
-  },
-  {
-    "id": "4gray-iptvnator-2153",
-    "repo": "4gray/iptvnator",
-    "repoUrl": "https://github.com/4gray/iptvnator",
-    "prNumber": 2153,
-    "prTitle": "fix(stalker): refresh series season picker and next episode from saved progress",
-    "prUrl": "https://github.com/4gray/iptvnator/pull/2153",
-    "status": "open",
-    "createdAt": "2026-11-07",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-13",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 534,
-      "deletions": 20,
-      "filesChanged": 12
     }
   },
   {
