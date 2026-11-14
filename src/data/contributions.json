@@ -25,14 +25,14 @@
     "prNumber": 2947,
     "prTitle": "fix(dropdown-item): respect preventDefault() on clicks for link items",
     "prUrl": "https://github.com/shoelace-style/webawesome/pull/2947",
-    "status": "open",
+    "status": "merged",
     "createdAt": "2026-10-26",
-    "mergedAt": null,
-    "closedAt": null,
+    "mergedAt": "2026-11-13",
+    "closedAt": "2026-11-13",
     "updatedAt": "2026-11-13",
     "language": "TypeScript",
     "stats": {
-      "additions": 70,
+      "additions": 85,
       "deletions": 12,
       "filesChanged": 4
     }
