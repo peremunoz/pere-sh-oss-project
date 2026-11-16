@@ -1,5 +1,43 @@
 [
   {
+    "id": "microsoft-garnet-2390",
+    "repo": "microsoft/garnet",
+    "repoUrl": "https://github.com/microsoft/garnet",
+    "prNumber": 2390,
+    "prTitle": "[RESP] Default custom command info and docs Name from registered command name",
+    "prUrl": "https://github.com/microsoft/garnet/pull/2390",
+    "status": "open",
+    "createdAt": "2026-11-16",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-16",
+    "language": "C#",
+    "stats": {
+      "additions": 117,
+      "deletions": 17,
+      "filesChanged": 5
+    }
+  },
+  {
+    "id": "assetripper-assetripper-2422",
+    "repo": "AssetRipper/AssetRipper",
+    "repoUrl": "https://github.com/AssetRipper/AssetRipper",
+    "prNumber": 2422,
+    "prTitle": "Respect unreadable assets setting during primary content extraction",
+    "prUrl": "https://github.com/AssetRipper/AssetRipper/pull/2422",
+    "status": "merged",
+    "createdAt": "2026-11-16",
+    "mergedAt": "2026-11-16",
+    "closedAt": "2026-11-16",
+    "updatedAt": "2026-11-16",
+    "language": "C#",
+    "stats": {
+      "additions": 60,
+      "deletions": 0,
+      "filesChanged": 3
+    }
+  },
+  {
     "id": "4gray-iptvnator-2153",
     "repo": "4gray/iptvnator",
     "repoUrl": "https://github.com/4gray/iptvnator",
