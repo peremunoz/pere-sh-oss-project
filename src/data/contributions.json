@@ -1,5 +1,62 @@
 [
   {
+    "id": "4gray-iptvnator-2153",
+    "repo": "4gray/iptvnator",
+    "repoUrl": "https://github.com/4gray/iptvnator",
+    "prNumber": 2153,
+    "prTitle": "fix(stalker): refresh series season picker and next episode from saved progress",
+    "prUrl": "https://github.com/4gray/iptvnator/pull/2153",
+    "status": "open",
+    "createdAt": "2026-11-07",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-15",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 920,
+      "deletions": 167,
+      "filesChanged": 22
+    }
+  },
+  {
+    "id": "vuejs-eslint-plugin-vue-3214",
+    "repo": "vuejs/eslint-plugin-vue",
+    "repoUrl": "https://github.com/vuejs/eslint-plugin-vue",
+    "prNumber": 3214,
+    "prTitle": "feat(no-boolean-default, require-default-prop): support props with multiple types",
+    "prUrl": "https://github.com/vuejs/eslint-plugin-vue/pull/3214",
+    "status": "open",
+    "createdAt": "2026-10-26",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-13",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 470,
+      "deletions": 47,
+      "filesChanged": 6
+    }
+  },
+  {
+    "id": "shoelace-style-webawesome-2947",
+    "repo": "shoelace-style/webawesome",
+    "repoUrl": "https://github.com/shoelace-style/webawesome",
+    "prNumber": 2947,
+    "prTitle": "fix(dropdown-item): respect preventDefault() on clicks for link items",
+    "prUrl": "https://github.com/shoelace-style/webawesome/pull/2947",
+    "status": "merged",
+    "createdAt": "2026-10-26",
+    "mergedAt": "2026-11-13",
+    "closedAt": "2026-11-13",
+    "updatedAt": "2026-11-13",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 85,
+      "deletions": 12,
+      "filesChanged": 4
+    }
+  },
+  {
     "id": "mattermost-mattermost-39563",
     "repo": "mattermost/mattermost",
     "repoUrl": "https://github.com/mattermost/mattermost",
@@ -19,35 +76,16 @@
     }
   },
   {
-    "id": "vuejs-eslint-plugin-vue-3214",
-    "repo": "vuejs/eslint-plugin-vue",
-    "repoUrl": "https://github.com/vuejs/eslint-plugin-vue",
-    "prNumber": 3214,
-    "prTitle": "feat(no-boolean-default, require-default-prop): support props with multiple types",
-    "prUrl": "https://github.com/vuejs/eslint-plugin-vue/pull/3214",
-    "status": "open",
-    "createdAt": "2026-10-26",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-09",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 387,
-      "deletions": 24,
-      "filesChanged": 6
-    }
-  },
-  {
     "id": "podman-desktop-podman-desktop-19944",
     "repo": "podman-desktop/podman-desktop",
     "repoUrl": "https://github.com/podman-desktop/podman-desktop",
     "prNumber": 19944,
     "prTitle": "fix(main): send upgrade headers and zero Content-Length for podmanAttach",
     "prUrl": "https://github.com/podman-desktop/podman-desktop/pull/19944",
-    "status": "open",
+    "status": "merged",
     "createdAt": "2026-10-29",
-    "mergedAt": null,
-    "closedAt": null,
+    "mergedAt": "2026-11-09",
+    "closedAt": "2026-11-09",
     "updatedAt": "2026-11-09",
     "language": "TypeScript",
     "stats": {
@@ -92,44 +130,6 @@
       "additions": 72,
       "deletions": 28,
       "filesChanged": 2
-    }
-  },
-  {
-    "id": "shoelace-style-webawesome-2947",
-    "repo": "shoelace-style/webawesome",
-    "repoUrl": "https://github.com/shoelace-style/webawesome",
-    "prNumber": 2947,
-    "prTitle": "fix(dropdown-item): respect preventDefault() on clicks for link items",
-    "prUrl": "https://github.com/shoelace-style/webawesome/pull/2947",
-    "status": "open",
-    "createdAt": "2026-10-26",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-07",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 70,
-      "deletions": 12,
-      "filesChanged": 4
-    }
-  },
-  {
-    "id": "4gray-iptvnator-2153",
-    "repo": "4gray/iptvnator",
-    "repoUrl": "https://github.com/4gray/iptvnator",
-    "prNumber": 2153,
-    "prTitle": "fix(stalker): refresh series season picker and next episode from saved progress",
-    "prUrl": "https://github.com/4gray/iptvnator/pull/2153",
-    "status": "draft",
-    "createdAt": "2026-11-07",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-07",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 534,
-      "deletions": 20,
-      "filesChanged": 12
     }
   },
   {
