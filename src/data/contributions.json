@@ -1,5 +1,43 @@
 [
   {
+    "id": "backstage-backstage-36911",
+    "repo": "backstage/backstage",
+    "repoUrl": "https://github.com/backstage/backstage",
+    "prNumber": 36911,
+    "prTitle": "fix(scaffolder): allow GitHub Apps with selected repositories to create repos",
+    "prUrl": "https://github.com/backstage/backstage/pull/36911",
+    "status": "open",
+    "createdAt": "2026-11-16",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-18",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 632,
+      "deletions": 59,
+      "filesChanged": 10
+    }
+  },
+  {
+    "id": "microsoft-kiota-8609",
+    "repo": "microsoft/kiota",
+    "repoUrl": "https://github.com/microsoft/kiota",
+    "prNumber": 8609,
+    "prTitle": "fix: preserve nullable enum collections with null-only enum branches",
+    "prUrl": "https://github.com/microsoft/kiota/pull/8609",
+    "status": "open",
+    "createdAt": "2026-11-16",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-18",
+    "language": "C#",
+    "stats": {
+      "additions": 679,
+      "deletions": 26,
+      "filesChanged": 5
+    }
+  },
+  {
     "id": "microsoft-garnet-2390",
     "repo": "microsoft/garnet",
     "repoUrl": "https://github.com/microsoft/garnet",
@@ -54,44 +92,6 @@
       "additions": 60,
       "deletions": 0,
       "filesChanged": 3
-    }
-  },
-  {
-    "id": "backstage-backstage-36911",
-    "repo": "backstage/backstage",
-    "repoUrl": "https://github.com/backstage/backstage",
-    "prNumber": 36911,
-    "prTitle": "fix(scaffolder): allow GitHub Apps with selected repositories to create repos",
-    "prUrl": "https://github.com/backstage/backstage/pull/36911",
-    "status": "draft",
-    "createdAt": "2026-11-16",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-16",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 308,
-      "deletions": 23,
-      "filesChanged": 10
-    }
-  },
-  {
-    "id": "microsoft-kiota-8609",
-    "repo": "microsoft/kiota",
-    "repoUrl": "https://github.com/microsoft/kiota",
-    "prNumber": 8609,
-    "prTitle": "fix: preserve nullable enum collections with null-only enum branches",
-    "prUrl": "https://github.com/microsoft/kiota/pull/8609",
-    "status": "draft",
-    "createdAt": "2026-11-16",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-16",
-    "language": "C#",
-    "stats": {
-      "additions": 298,
-      "deletions": 17,
-      "filesChanged": 5
     }
   },
   {
