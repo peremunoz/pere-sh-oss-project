@@ -6,10 +6,10 @@
     "prNumber": 2390,
     "prTitle": "[RESP] Default custom command info and docs Name from registered command name",
     "prUrl": "https://github.com/microsoft/garnet/pull/2390",
-    "status": "open",
+    "status": "merged",
     "createdAt": "2026-11-16",
-    "mergedAt": null,
-    "closedAt": null,
+    "mergedAt": "2026-11-17",
+    "closedAt": "2026-11-17",
     "updatedAt": "2026-11-17",
     "language": "C#",
     "stats": {
