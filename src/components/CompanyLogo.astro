@@ -1,0 +1,47 @@
+---
+import type { ImageMetadata } from 'astro';
+import microsoftLogo from '../assets/logos/companies/microsoft.svg';
+import vueLogo from '../assets/logos/companies/vue.svg';
+import { getCompanyForRepo } from '../utils/company';
+
+interface Props {
+  repo: string;
+  variant?: 'full' | 'icon';
+  class?: string;
+  alt?: string;
+}
+
+const { repo, variant = 'icon', class: className = '', alt } = Astro.props;
+
+const company = getCompanyForRepo(repo);
+
+const logoMap: Record<string, ImageMetadata> = {
+  microsoft: microsoftLogo,
+  vuejs: vueLogo,
+};
+
+const logo = company ? logoMap[company.id] : null;
+---
+
+{company && logo && (
+  variant === 'icon' ? (
+    <img
+      src={logo.src}
+      alt={alt || company.name}
+      class={className || 'h-4.5 w-4.5 shrink-0 object-contain inline-block'}
+      loading="lazy"
+      aria-hidden="true"
+    />
+  ) : (
+    <span class="inline-flex items-center gap-1.5">
+      <img
+        src={logo.src}
+        alt={alt || company.name}
+        class="h-4.5 w-4.5 shrink-0 object-contain inline-block"
+        loading="lazy"
+        aria-hidden="true"
+      />
+      <span>{company.name}</span>
+    </span>
+  )
+)}
