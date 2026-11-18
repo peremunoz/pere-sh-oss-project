@@ -1,21 +1,97 @@
 [
   {
+    "id": "microsoft-garnet-2390",
+    "repo": "microsoft/garnet",
+    "repoUrl": "https://github.com/microsoft/garnet",
+    "prNumber": 2390,
+    "prTitle": "[RESP] Default custom command info and docs Name from registered command name",
+    "prUrl": "https://github.com/microsoft/garnet/pull/2390",
+    "status": "merged",
+    "createdAt": "2026-11-16",
+    "mergedAt": "2026-11-17",
+    "closedAt": "2026-11-17",
+    "updatedAt": "2026-11-17",
+    "language": "C#",
+    "stats": {
+      "additions": 117,
+      "deletions": 17,
+      "filesChanged": 5
+    }
+  },
+  {
     "id": "4gray-iptvnator-2153",
     "repo": "4gray/iptvnator",
     "repoUrl": "https://github.com/4gray/iptvnator",
     "prNumber": 2153,
     "prTitle": "fix(stalker): refresh series season picker and next episode from saved progress",
     "prUrl": "https://github.com/4gray/iptvnator/pull/2153",
-    "status": "open",
+    "status": "merged",
     "createdAt": "2026-11-07",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-15",
+    "mergedAt": "2026-11-17",
+    "closedAt": "2026-11-17",
+    "updatedAt": "2026-11-17",
     "language": "TypeScript",
     "stats": {
-      "additions": 920,
-      "deletions": 167,
+      "additions": 993,
+      "deletions": 183,
       "filesChanged": 22
+    }
+  },
+  {
+    "id": "assetripper-assetripper-2422",
+    "repo": "AssetRipper/AssetRipper",
+    "repoUrl": "https://github.com/AssetRipper/AssetRipper",
+    "prNumber": 2422,
+    "prTitle": "Respect unreadable assets setting during primary content extraction",
+    "prUrl": "https://github.com/AssetRipper/AssetRipper/pull/2422",
+    "status": "merged",
+    "createdAt": "2026-11-16",
+    "mergedAt": "2026-11-16",
+    "closedAt": "2026-11-16",
+    "updatedAt": "2026-11-16",
+    "language": "C#",
+    "stats": {
+      "additions": 60,
+      "deletions": 0,
+      "filesChanged": 3
+    }
+  },
+  {
+    "id": "backstage-backstage-36911",
+    "repo": "backstage/backstage",
+    "repoUrl": "https://github.com/backstage/backstage",
+    "prNumber": 36911,
+    "prTitle": "fix(scaffolder): allow GitHub Apps with selected repositories to create repos",
+    "prUrl": "https://github.com/backstage/backstage/pull/36911",
+    "status": "draft",
+    "createdAt": "2026-11-16",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-16",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 308,
+      "deletions": 23,
+      "filesChanged": 10
+    }
+  },
+  {
+    "id": "microsoft-kiota-8609",
+    "repo": "microsoft/kiota",
+    "repoUrl": "https://github.com/microsoft/kiota",
+    "prNumber": 8609,
+    "prTitle": "fix: preserve nullable enum collections with null-only enum branches",
+    "prUrl": "https://github.com/microsoft/kiota/pull/8609",
+    "status": "draft",
+    "createdAt": "2026-11-16",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-16",
+    "language": "C#",
+    "stats": {
+      "additions": 298,
+      "deletions": 17,
+      "filesChanged": 5
     }
   },
   {
