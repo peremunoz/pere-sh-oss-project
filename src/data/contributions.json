@@ -1,5 +1,81 @@
 [
   {
+    "id": "microsoft-kiota-8609",
+    "repo": "microsoft/kiota",
+    "repoUrl": "https://github.com/microsoft/kiota",
+    "prNumber": 8609,
+    "prTitle": "fix: preserve nullable enum collections with null-only enum branches",
+    "prUrl": "https://github.com/microsoft/kiota/pull/8609",
+    "status": "open",
+    "createdAt": "2026-11-16",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-19",
+    "language": "C#",
+    "stats": {
+      "additions": 678,
+      "deletions": 26,
+      "filesChanged": 5
+    }
+  },
+  {
+    "id": "finsys-dockhand-1865",
+    "repo": "Finsys/dockhand",
+    "repoUrl": "https://github.com/Finsys/dockhand",
+    "prNumber": 1865,
+    "prTitle": "fix(activity): log container update events when recreating containers (#1864)",
+    "prUrl": "https://github.com/Finsys/dockhand/pull/1865",
+    "status": "merged",
+    "createdAt": "2026-11-05",
+    "mergedAt": "2026-11-19",
+    "closedAt": "2026-11-19",
+    "updatedAt": "2026-11-19",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 60,
+      "deletions": 2,
+      "filesChanged": 4
+    }
+  },
+  {
+    "id": "fmaclen-hollama-379",
+    "repo": "fmaclen/hollama",
+    "repoUrl": "https://github.com/fmaclen/hollama",
+    "prNumber": 379,
+    "prTitle": "fix(sessions): remove deprecated Ollama model and runtime options",
+    "prUrl": "https://github.com/fmaclen/hollama/pull/379",
+    "status": "open",
+    "createdAt": "2026-11-19",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-19",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 2,
+      "deletions": 184,
+      "filesChanged": 16
+    }
+  },
+  {
+    "id": "recharts-recharts-8261",
+    "repo": "recharts/recharts",
+    "repoUrl": "https://github.com/recharts/recharts",
+    "prNumber": 8261,
+    "prTitle": "fix: render custom shape when activeShape is true in Scatter, RadialBar, and Funnel",
+    "prUrl": "https://github.com/recharts/recharts/pull/8261",
+    "status": "open",
+    "createdAt": "2026-11-19",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-19",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 341,
+      "deletions": 10,
+      "filesChanged": 7
+    }
+  },
+  {
     "id": "backstage-backstage-36911",
     "repo": "backstage/backstage",
     "repoUrl": "https://github.com/backstage/backstage",
@@ -16,25 +92,6 @@
       "additions": 632,
       "deletions": 59,
       "filesChanged": 10
-    }
-  },
-  {
-    "id": "microsoft-kiota-8609",
-    "repo": "microsoft/kiota",
-    "repoUrl": "https://github.com/microsoft/kiota",
-    "prNumber": 8609,
-    "prTitle": "fix: preserve nullable enum collections with null-only enum branches",
-    "prUrl": "https://github.com/microsoft/kiota/pull/8609",
-    "status": "open",
-    "createdAt": "2026-11-16",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-18",
-    "language": "C#",
-    "stats": {
-      "additions": 679,
-      "deletions": 26,
-      "filesChanged": 5
     }
   },
   {
@@ -244,25 +301,6 @@
       "additions": 42,
       "deletions": 5,
       "filesChanged": 2
-    }
-  },
-  {
-    "id": "finsys-dockhand-1865",
-    "repo": "Finsys/dockhand",
-    "repoUrl": "https://github.com/Finsys/dockhand",
-    "prNumber": 1865,
-    "prTitle": "fix(activity): log container update events when recreating containers (#1864)",
-    "prUrl": "https://github.com/Finsys/dockhand/pull/1865",
-    "status": "open",
-    "createdAt": "2026-11-05",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-05",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 60,
-      "deletions": 2,
-      "filesChanged": 4
     }
   },
   {
