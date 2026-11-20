@@ -10,12 +10,50 @@
     "createdAt": "2026-11-16",
     "mergedAt": null,
     "closedAt": null,
-    "updatedAt": "2026-11-19",
+    "updatedAt": "2026-11-20",
     "language": "C#",
     "stats": {
-      "additions": 678,
+      "additions": 679,
       "deletions": 26,
       "filesChanged": 5
+    }
+  },
+  {
+    "id": "fmaclen-hollama-379",
+    "repo": "fmaclen/hollama",
+    "repoUrl": "https://github.com/fmaclen/hollama",
+    "prNumber": 379,
+    "prTitle": "fix(sessions): remove deprecated Ollama model and runtime options",
+    "prUrl": "https://github.com/fmaclen/hollama/pull/379",
+    "status": "merged",
+    "createdAt": "2026-11-19",
+    "mergedAt": "2026-11-20",
+    "closedAt": "2026-11-20",
+    "updatedAt": "2026-11-20",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 2,
+      "deletions": 255,
+      "filesChanged": 16
+    }
+  },
+  {
+    "id": "recharts-recharts-8261",
+    "repo": "recharts/recharts",
+    "repoUrl": "https://github.com/recharts/recharts",
+    "prNumber": 8261,
+    "prTitle": "fix: render custom shape when activeShape is true in Scatter, RadialBar, and Funnel",
+    "prUrl": "https://github.com/recharts/recharts/pull/8261",
+    "status": "open",
+    "createdAt": "2026-11-19",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-20",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 395,
+      "deletions": 10,
+      "filesChanged": 7
     }
   },
   {
@@ -35,44 +73,6 @@
       "additions": 60,
       "deletions": 2,
       "filesChanged": 4
-    }
-  },
-  {
-    "id": "fmaclen-hollama-379",
-    "repo": "fmaclen/hollama",
-    "repoUrl": "https://github.com/fmaclen/hollama",
-    "prNumber": 379,
-    "prTitle": "fix(sessions): remove deprecated Ollama model and runtime options",
-    "prUrl": "https://github.com/fmaclen/hollama/pull/379",
-    "status": "open",
-    "createdAt": "2026-11-19",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-19",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 2,
-      "deletions": 184,
-      "filesChanged": 16
-    }
-  },
-  {
-    "id": "recharts-recharts-8261",
-    "repo": "recharts/recharts",
-    "repoUrl": "https://github.com/recharts/recharts",
-    "prNumber": 8261,
-    "prTitle": "fix: render custom shape when activeShape is true in Scatter, RadialBar, and Funnel",
-    "prUrl": "https://github.com/recharts/recharts/pull/8261",
-    "status": "open",
-    "createdAt": "2026-11-19",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-19",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 341,
-      "deletions": 10,
-      "filesChanged": 7
     }
   },
   {
