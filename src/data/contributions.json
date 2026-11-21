@@ -1,5 +1,62 @@
 [
   {
+    "id": "prowlengine-prowl-526",
+    "repo": "ProwlEngine/Prowl",
+    "repoUrl": "https://github.com/ProwlEngine/Prowl",
+    "prNumber": 526,
+    "prTitle": "Emit #line directives around inlined shader includes",
+    "prUrl": "https://github.com/ProwlEngine/Prowl/pull/526",
+    "status": "open",
+    "createdAt": "2026-11-21",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-21",
+    "language": "C#",
+    "stats": {
+      "additions": 1599,
+      "deletions": 26,
+      "filesChanged": 4
+    }
+  },
+  {
+    "id": "bpatrik-pigallery2-1417",
+    "repo": "bpatrik/pigallery2",
+    "repoUrl": "https://github.com/bpatrik/pigallery2",
+    "prNumber": 1417,
+    "prTitle": "Refresh projection caches daily for relative-date queries #1405",
+    "prUrl": "https://github.com/bpatrik/pigallery2/pull/1417",
+    "status": "open",
+    "createdAt": "2026-11-21",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-21",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 400,
+      "deletions": 11,
+      "filesChanged": 8
+    }
+  },
+  {
+    "id": "elmohq-elmo-1249",
+    "repo": "elmohq/elmo",
+    "repoUrl": "https://github.com/elmohq/elmo",
+    "prNumber": 1249,
+    "prTitle": "Use replaceAll instead of global regexes for plain string replacements",
+    "prUrl": "https://github.com/elmohq/elmo/pull/1249",
+    "status": "open",
+    "createdAt": "2026-11-21",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-21",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 33,
+      "deletions": 32,
+      "filesChanged": 13
+    }
+  },
+  {
     "id": "microsoft-kiota-8609",
     "repo": "microsoft/kiota",
     "repoUrl": "https://github.com/microsoft/kiota",
@@ -29,7 +86,7 @@
     "createdAt": "2026-11-19",
     "mergedAt": "2026-11-20",
     "closedAt": "2026-11-20",
-    "updatedAt": "2026-11-20",
+    "updatedAt": "2026-11-21",
     "language": "TypeScript",
     "stats": {
       "additions": 2,
