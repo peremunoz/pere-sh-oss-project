@@ -1,6 +1,7 @@
 ---
 import type { ImageMetadata } from 'astro';
 import microsoftLogo from '../assets/logos/companies/microsoft.svg';
+import obsidianLogo from '../assets/logos/companies/obsidian.svg';
 import vueLogo from '../assets/logos/companies/vue.svg';
 import { getCompanyForRepo } from '../utils/company';
 
@@ -17,6 +18,7 @@ const company = getCompanyForRepo(repo);
 
 const logoMap: Record<string, ImageMetadata> = {
   microsoft: microsoftLogo,
+  obsidian: obsidianLogo,
   vuejs: vueLogo,
 };
 
