@@ -25,16 +25,35 @@
     "prNumber": 1417,
     "prTitle": "Refresh projection caches daily for relative-date queries #1405",
     "prUrl": "https://github.com/bpatrik/pigallery2/pull/1417",
-    "status": "open",
+    "status": "merged",
     "createdAt": "2026-11-21",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-21",
+    "mergedAt": "2026-11-22",
+    "closedAt": "2026-11-22",
+    "updatedAt": "2026-11-22",
     "language": "TypeScript",
     "stats": {
-      "additions": 400,
-      "deletions": 11,
-      "filesChanged": 8
+      "additions": 446,
+      "deletions": 17,
+      "filesChanged": 12
+    }
+  },
+  {
+    "id": "obsidianmd-obsidian-clipper-1021",
+    "repo": "obsidianmd/obsidian-clipper",
+    "repoUrl": "https://github.com/obsidianmd/obsidian-clipper",
+    "prNumber": 1021,
+    "prTitle": "Preserve highlight groupId and metadata when clipping",
+    "prUrl": "https://github.com/obsidianmd/obsidian-clipper/pull/1021",
+    "status": "open",
+    "createdAt": "2026-11-22",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-22",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 392,
+      "deletions": 28,
+      "filesChanged": 5
     }
   },
   {
