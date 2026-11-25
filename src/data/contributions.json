@@ -1,5 +1,24 @@
 [
   {
+    "id": "elmohq-elmo-1249",
+    "repo": "elmohq/elmo",
+    "repoUrl": "https://github.com/elmohq/elmo",
+    "prNumber": 1249,
+    "prTitle": "Use replaceAll instead of global regexes for plain string replacements",
+    "prUrl": "https://github.com/elmohq/elmo/pull/1249",
+    "status": "merged",
+    "createdAt": "2026-11-21",
+    "mergedAt": "2026-11-25",
+    "closedAt": "2026-11-25",
+    "updatedAt": "2026-11-25",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 33,
+      "deletions": 32,
+      "filesChanged": 13
+    }
+  },
+  {
     "id": "prowlengine-prowl-526",
     "repo": "ProwlEngine/Prowl",
     "repoUrl": "https://github.com/ProwlEngine/Prowl",
@@ -54,25 +73,6 @@
       "additions": 392,
       "deletions": 28,
       "filesChanged": 5
-    }
-  },
-  {
-    "id": "elmohq-elmo-1249",
-    "repo": "elmohq/elmo",
-    "repoUrl": "https://github.com/elmohq/elmo",
-    "prNumber": 1249,
-    "prTitle": "Use replaceAll instead of global regexes for plain string replacements",
-    "prUrl": "https://github.com/elmohq/elmo/pull/1249",
-    "status": "open",
-    "createdAt": "2026-11-21",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-21",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 33,
-      "deletions": 32,
-      "filesChanged": 13
     }
   },
   {
