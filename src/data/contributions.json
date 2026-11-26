@@ -1,5 +1,24 @@
 [
   {
+    "id": "vuejs-eslint-plugin-vue-3214",
+    "repo": "vuejs/eslint-plugin-vue",
+    "repoUrl": "https://github.com/vuejs/eslint-plugin-vue",
+    "prNumber": 3214,
+    "prTitle": "feat(no-boolean-default, require-default-prop): support props with multiple types",
+    "prUrl": "https://github.com/vuejs/eslint-plugin-vue/pull/3214",
+    "status": "merged",
+    "createdAt": "2026-10-26",
+    "mergedAt": "2026-11-26",
+    "closedAt": "2026-11-26",
+    "updatedAt": "2026-11-26",
+    "language": "TypeScript",
+    "stats": {
+      "additions": 470,
+      "deletions": 47,
+      "filesChanged": 6
+    }
+  },
+  {
     "id": "elmohq-elmo-1249",
     "repo": "elmohq/elmo",
     "repoUrl": "https://github.com/elmohq/elmo",
@@ -225,25 +244,6 @@
       "additions": 60,
       "deletions": 0,
       "filesChanged": 3
-    }
-  },
-  {
-    "id": "vuejs-eslint-plugin-vue-3214",
-    "repo": "vuejs/eslint-plugin-vue",
-    "repoUrl": "https://github.com/vuejs/eslint-plugin-vue",
-    "prNumber": 3214,
-    "prTitle": "feat(no-boolean-default, require-default-prop): support props with multiple types",
-    "prUrl": "https://github.com/vuejs/eslint-plugin-vue/pull/3214",
-    "status": "open",
-    "createdAt": "2026-10-26",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-13",
-    "language": "TypeScript",
-    "stats": {
-      "additions": 470,
-      "deletions": 47,
-      "filesChanged": 6
     }
   },
   {
