@@ -19,6 +19,25 @@
     }
   },
   {
+    "id": "microsoft-kiota-8609",
+    "repo": "microsoft/kiota",
+    "repoUrl": "https://github.com/microsoft/kiota",
+    "prNumber": 8609,
+    "prTitle": "fix: preserve nullable enum collections with null-only enum branches",
+    "prUrl": "https://github.com/microsoft/kiota/pull/8609",
+    "status": "open",
+    "createdAt": "2026-11-16",
+    "mergedAt": null,
+    "closedAt": null,
+    "updatedAt": "2026-11-26",
+    "language": "C#",
+    "stats": {
+      "additions": 679,
+      "deletions": 26,
+      "filesChanged": 5
+    }
+  },
+  {
     "id": "elmohq-elmo-1249",
     "repo": "elmohq/elmo",
     "repoUrl": "https://github.com/elmohq/elmo",
@@ -91,25 +110,6 @@
     "stats": {
       "additions": 392,
       "deletions": 28,
-      "filesChanged": 5
-    }
-  },
-  {
-    "id": "microsoft-kiota-8609",
-    "repo": "microsoft/kiota",
-    "repoUrl": "https://github.com/microsoft/kiota",
-    "prNumber": 8609,
-    "prTitle": "fix: preserve nullable enum collections with null-only enum branches",
-    "prUrl": "https://github.com/microsoft/kiota/pull/8609",
-    "status": "open",
-    "createdAt": "2026-11-16",
-    "mergedAt": null,
-    "closedAt": null,
-    "updatedAt": "2026-11-20",
-    "language": "C#",
-    "stats": {
-      "additions": 679,
-      "deletions": 26,
       "filesChanged": 5
     }
   },
